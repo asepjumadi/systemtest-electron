@@ -31,6 +31,6 @@ function(n) {
     })
 
 }(jQuery);
-ipcRenderer.on('already-close',function(event,response){
-  console.log(response)
-})
+// ipcRenderer.on('already-close',function(event,response){
+//   console.log(response)
+// })

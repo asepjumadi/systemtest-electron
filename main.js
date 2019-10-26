@@ -66,7 +66,10 @@ ipcMain.on('open-search-window',function(event,arg){
 
 ipcMain.on('close-search-window',(event,arg)=>{
     console.log('hid3 only')
-    event.sender.send('already-close',secondWindow.close())
+    secondWindow=null;
+    event.sender.send('already-close',(event,data)=>{
+        secondWindow=null;
+    })
     
     
 })
@@ -79,8 +82,6 @@ app.on('window-all-closed',function(){
 })
 app.on('activate',function(){
     if(mainWindow === null){
-        createWindow()
-    }else if(secondWindow===null){
         createWindow()
     }
 })

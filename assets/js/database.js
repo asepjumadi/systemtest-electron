@@ -17,11 +17,11 @@ function inputDataToDatabase(){
     ipcRenderer.send('testmain', params)
     
   }
-//   ipcRenderer.on('testclient', function(event, response){
+  ipcRenderer.on('testclient', function(event, response){
   
-//     console.log(response)
+    console.log(response)
     
-//   })
+  })
  
 function searchByNo(){
     var params={
