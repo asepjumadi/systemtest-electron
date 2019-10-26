@@ -1,0 +1,61 @@
+<template class="section-template">
+        <section id="tabel" class="wrapper style3">
+ <!-- Begin Page Content -->
+ <section class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+            <div >
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>CODE KLARIFIKASI</th>
+                    <th>TANGGAL TERIMA SURAT</th>
+                    <th>NOMOR DAN TANGGAL</th>
+                    <th>ASAL SURAT</th>
+                    <th>ISI RINGKASAN</th>
+                    <th>KETERANGAN</th>
+                  </tr>
+                </thead>
+                <tbody class="testok" id="readTable">
+
+                </tbody>
+              </table>
+              <div class="pagination">
+                <a href="#" class="first" data-action="first">&laquo;</a>
+                <a href="#" class="previous" data-action="previous">&lsaquo;</a>
+                <input type="text" readonly="readonly" data-max-page="40" />
+                <a href="#" class="next" data-action="next">&rsaquo;</a>
+                <a href="#" class="last" data-action="last">&raquo;</a>
+              </div>
+            </div>
+            
+              <!-- <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <tbody id=""> -->
+                
+                <script src="../assets/js/database.js"></script>
+                <script>readTable()</script>
+                <script src="../assets//vendor//jquery/jquery.jqpagination.min.js"></script>
+                
+                <!-- </tbody>
+              </table> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+ </section>
+</section>
+</template>
