@@ -10,7 +10,17 @@ const {ipcMain}= require('electron')
 var path =require('path')
 // require('./dialog/')
 
+const PHPServer = require('php-server-manager');
 
+const server = new PHPServer({
+  
+    port: 5555,
+    directory: __dirname,
+    directives: {
+        display_errors: 1,
+        expose_php: 1
+    }
+});
 
 let mainWindow
 let secondWindow
@@ -31,7 +41,7 @@ function createWindow() {
 })
 
 mainWindow.webContents.openDevTools()
-mainWindow.loadURL(`file://${__dirname}/index.html`)
+mainWindow.loadURL(`file://${__dirname}/index.html`||'http://'+server.host+':'+server.port+'/')
 
 mainWindow.once('ready-to-show',()=>{
     mainWindow.show();
@@ -54,22 +64,22 @@ secondWindow = new BrowserWindow({frame: false,
     }
   })
 
-  secondWindow.loadURL(`file://${__dirname}/windows/modal.html`)
+  secondWindow.loadURL(`file://${__dirname}/windows/modal.html`|| 'http://'+server.host+':'+server.port+'/')
 
   require('./menu/mainmenu')
 
 }
 
-ipcMain.on('open-search-window',function(event,arg){
+ipcMain.on('open-search-window',(event,arg)=>{
     secondWindow.show()
 })
 
 ipcMain.on('close-search-window',(event,arg)=>{
     console.log('hid3 only')
     secondWindow=null;
-    event.sender.send('already-close',(event,data)=>{
-        secondWindow=null;
-    })
+    // event.sender.send('already-close',(event,data)=>{
+    //     secondWindow=null;
+    // })
     
     
 })

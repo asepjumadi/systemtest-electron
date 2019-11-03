@@ -28,4 +28,7 @@ var connection = mysql.createConnection({
     ipcMain.on('add-clean',function(event,data){
         event.sender.send('feedback-add',null)
     })
+    ipcMain.on('search-and-show-clear',function(event ,data){
+        
+    })
  }

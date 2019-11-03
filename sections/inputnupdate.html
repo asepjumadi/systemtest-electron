@@ -1,62 +1,59 @@
 <template class="section-template">
-    <section id="inputupdate" class="wrapper style3">
-        <div class="container-fluid" >
-            <H2>Menu Update & Input Undangan & Non-Undangan</H2>
-            <div class="card shadow mb-4">
-                <div class="card-body">
-        <form id="inputBro" action="inputnupdate.html">
-            <div class="form-group  row justify-content-between">
-              <label for="exampleInputEmail1">Nomor</label>
-              <div class="col-sm-10 ">
-                <input type="number" class="col-sm-8 col-form-label" id="nomer" aria-describedby="emailHelp" >
+  <section id="inputupdate" class="wrapper style3">
+      <div class="container" >
+          <H2>Menu Update & Input Undangan & Non-Undangan</H2>
+          <div class="card shadow mb-4">
+              <div class="card-body">
+      <div class="d-flex  justify-content-between">
+          <form id="inputBro" action="inputnupdate.html">
+              <div class="form-group form-inline">
+                <label for="exampleInputEmail1"  >Nomor</label>
+                    <input type="number" class="col-xl-12 col-form-label" id="nomer" aria-describedby="emailHelp" >
               </div>
-            </div>
-            <div class="form-group row justify-content-between">
-              <label for="exampleInputPassword1">Code Kalrifikasi</label>
-              <div class="col-sm-10">
-              <input type="text" class="col-sm-8 col-form-label" id="code" >
-            </div>
-        </div>
-            <div class="form-group row justify-content-between">
-                <label for="exampleInputPassword1">Tanggal Terima</label>
-                <div class="col-sm-10">
-                <input type="text" class="col-sm-8 col-form-label" id="tanggaltrima" >
+              <div class="form-group form-inline ">
+                <label for="exampleInputPassword1">Code Kalrifikasi</label>
+                <input type="text" class="col-sm-12 col-form-label" id="code" >
+          </div>
+              <div class="form-group form-inline ">
+                  <label for="exampleInputPassword1">Tanggal Terima</label>
+                  <input type="text" class="col-sm-12 col-form-label" id="tanggaltrima" >
               </div>
-            </div>
-              <div class="form-group row justify-content-between">
-                <label for="exampleInputPassword1">Nomor & Tanggal</label>
-                <div class="col-sm-10">
-                <input type="text" class="col-sm-8 col-form-label" id="nomorTanggal" >
-                </div> 
-            </div>
-              <div class="form-group row justify-content-between">
-                <label for="exampleInputPassword1">Asal Surat</label>
-                <div class="col-sm-10">
-                <input type="text" class="col-sm-8 col-form-label" id="asalsurat" >
+                <div class="form-group form-inline ">
+                  <label for="exampleInputPassword1">Nomor & Tanggal</label>
+                  <input type="text" class="col-sm-12 col-form-label" id="nomorTanggal" >
               </div>
-            </div>
-              <div class="form-group row justify-content-between">
-                <label for="exampleInputPassword1">Isi Ringkasan</label>
-                <div class="col-sm-10">
-                <input type="text" class="col-sm-8 col-form-label" id="isiringkasan" >
-            </div>
-            </div>
-            <div class="form-group row justify-content-between">
-                    <label for="exampleInputPassword1">Keterangan</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="col-sm-8 col-form-label" id="keterangan" >
-                </div>
-                </div>
-               
-                        <input id="open-search-button" type="button" title="Cari" value="Cari"  class="btn btn-primary"  >
-                        <input type="button" class="btn btn-primary" onclick="inputDataToDatabase()" title="Simpan" value="Simpan">
-                        <!-- <button  class="btn btn-primary" >Simpan</button> -->
-                        <input type="button" class="btn btn-primary" title="Tambah" value="Tambah" id="tambah">
-                        <button type="submit" class="btn btn-primary">Ubah</button>
-            
-          </form>
-        </div>
+                <div class="form-group form-inline ">
+                  <label for="exampleInputPassword1">Asal Surat</label>
+                  <input type="text" class="col-sm-12 col-form-label" id="asalsurat" >
+              </div>
+                <div class="form-group d-flex">
+                  <label for="exampleInputPassword1"  >Isi Ringkasan</label>
+                  <!-- <input type="text" class="col-sm-12 col-form-label" id="isiringkasan" > -->
+                      <textarea rows="2" cols="50" name="comment" form="inputBro" id="isiringkasan" style="margin-left: 50px;" placeholder="masukkan ringkasan"></textarea>
+              </div>
+
+              <div class="form-group form-inline ">
+                      <label for="exampleInputPassword1">Keterangan</label>
+                      <input type="text" class="col-sm-12 col-form-label" id="keterangan" >
+                  </div>
+                 
+                          
+                          <input type="button" class="btn btn-primary" onclick="inputDataToDatabase()" title="Simpan" value="Simpan">
+                          <!-- <button  class="btn btn-primary" >Simpan</button> -->
+                          <input type="button" class="btn btn-primary" title="Tambah" value="Tambah" id="tambah">
+                          <button type="submit" class="btn btn-primary">Ubah</button>
+              
+            </form>
+            <form id="search-no" class="mr-50">
+                <div class="form-group  form-inline justify-content-between ">
+                    <label for="exampleInputEmail1">Nomor</label>
+                        <input type="number" class="col-sm-8 col-form-label" id="nomer_id" aria-describedby="emailHelp" >
+                  </div>
+                  <input id="search-by-number" type="button" title="Cari" value="Cari"  class="btn btn-primary" onclick="console.log( $('#open-search-button').val())">
+            </form>        
+          </div>
+      </div>
     </div>
-    </div>
-    </section>
+  </div>
+  </section>
 </template>
