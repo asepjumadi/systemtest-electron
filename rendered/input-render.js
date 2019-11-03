@@ -14,31 +14,12 @@ function(n) {
       sendCloseSecondWindowEvent: function() {
         ipcRenderer.send('close-second-window', 'an-argument')
       },
-      makeAjaxRequest:function() {
-        $.ajax({
-            url: 'search_execute.php',
-            type: 'get',
-            datatype: 'html',
-            data: {search: $('#nomer_id').val()},
-            success: function(response) {
-                alert("Success!");
-            }, error : function() {
-                alert("Something went wrong!");
-           }
-        });
-    },
+      
+
       openSearchByNumber:function(){
         var params = {
           nomer:$('#nomer_id').val(),
         }
-        $('#search-by-number').click(function(){
-          makeAjaxRequest();
-        });
-
-        $('#search-no').submit(function(e){
-                e.preventDefault();
-                makeAjaxRequest();
-        });
         ipcRenderer.send('search-and-show-clear',params)
         
       },
@@ -72,5 +53,11 @@ function(n) {
 
 ipcRenderer.on('feedback-add',function(event,response){
   console.log(response)
+ 
+})
+ipcRenderer.on('getAllDataSucess',function(event,response){
+  console.log('all-one')
+  console.log(response[0])
+  $('#nomer').val(response[0].no),$('#code').val(response[0].code),$('#tanggaltrima').val(response[0].tanggal_terima),$('#nomorTanggal').val(response[0].nomer_tanggal),$('#asalsurat').val(response[0].nomer_tanggal),$('#isiringkasan').val(response[0].asal_surat),$('#keterangan').val(response[0].keterangan)
  
 })

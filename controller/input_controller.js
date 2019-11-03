@@ -29,6 +29,15 @@ var connection = mysql.createConnection({
         event.sender.send('feedback-add',null)
     })
     ipcMain.on('search-and-show-clear',function(event ,data){
-        
+        var response={
+            no:data.nomer
+        }
+        connection.query("SELECT `no`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM undangan WHERE ?",response,function(error,result,field){
+            event.sender.send('getAllDataSucess', result)
+            console.log('kosong')
+            console.log(result)
+            console.log('kosong2')
+        })
+        console.log(data)
     })
  }
