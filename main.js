@@ -99,4 +99,3 @@ app.on('activate',function(){
 
 var ipcInput = require('./controller/input_controller')(ipcMain)
 var ipcTabel =require('./controller/tabel_controller')(ipcMain)
-var ipcModal =require('./controller/modal_controller')(ipcMain,createWindow)

@@ -1,5 +1,6 @@
 const {ipcRenderer} = require('electron')
-
+const { dialog } = require('electron')
+const {BrowserWindow} =require('electron')
 window.ipc = window.ipc || {},
 function(n) {
     ipc.messaging = {
@@ -23,7 +24,18 @@ function(n) {
         ipcRenderer.send('search-and-show-clear',params)
         
       },
-      
+      updateByNumber:function(){
+        var params = {
+          nomer:$('#nomer_id').val(),
+          code:$('#code').val(),
+          tanggaltrima:$('#tanggaltrima').val(),
+          nomorTanggal:$('#nomorTanggal').val(),
+          asalsurat:$('#asalsurat').val(),
+          isiringkasan:$('#isiringkasan').val(),
+          keterangan:$('#keterangan').val(),
+        }
+        ipcRenderer.send('updateNowbyNumber',params)
+      },
 
       init: function() {
         $('#tambah').click( function () {
@@ -42,6 +54,9 @@ function(n) {
         $('#search-by-number').click(function(){
           ipc.messaging.openSearchByNumber()
         })
+        $('#ubah').click(function(){
+          ipc.messaging.updateByNumber()
+        })
       }
     };
 
@@ -57,7 +72,17 @@ ipcRenderer.on('feedback-add',function(event,response){
 })
 ipcRenderer.on('getAllDataSucess',function(event,response){
   console.log('all-one')
+  if(response[0]===undefined){
+    console.log('undefined only')
+    $('#nomer').val(0),$('#code').val("Kode surat tidak ditemukan"),$('#tanggaltrima').val("tanggal terima surat tidak ditemukan"),$('#nomorTanggal').val("nomer dan tanggal surat tidak ditemukan"),$('#asalsurat').val("asal surat tidak ditemukan"),$('#isiringkasan').val("isi ringkasan tidak ditemukan"),$('#keterangan').val("keterangan tidak ditemukan")
+    
+   
+
+  }else if(!response[0]===undefined)
   console.log(response[0])
-  $('#nomer').val(response[0].no),$('#code').val(response[0].code),$('#tanggaltrima').val(response[0].tanggal_terima),$('#nomorTanggal').val(response[0].nomer_tanggal),$('#asalsurat').val(response[0].nomer_tanggal),$('#isiringkasan').val(response[0].asal_surat),$('#keterangan').val(response[0].keterangan)
+  $('#nomer').val(response[0].no),$('#code').val(response[0].code),$('#tanggaltrima').val(response[0].tanggal_terima),$('#nomorTanggal').val(response[0].nomer_tanggal),$('#asalsurat').val(response[0].asal_surat),$('#isiringkasan').val(response[0].isi_ringkasan),$('#keterangan').val(response[0].keterangan)
  
+})
+ipcRenderer.on('updateResponse',function(event,response){
+  console.log(response)
 })
