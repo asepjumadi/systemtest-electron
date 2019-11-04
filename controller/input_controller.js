@@ -57,6 +57,7 @@ var connection = mysql.createConnection({
         var response={
             no:data.nomer
         }
+        console.log(data)
         connection.query("SELECT `no`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM undangan WHERE ?",response,function(error,result,field){
             event.sender.send('getAllDataSucess', result)
             console.log('kosong')
