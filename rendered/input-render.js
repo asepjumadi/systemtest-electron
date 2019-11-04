@@ -24,6 +24,13 @@ function(n) {
         ipcRenderer.send('search-and-show-clear',params)
         
       },
+      deleteByNumber:function(){
+        var params = {
+          nomer:$('#nomer_id').val(),
+        }
+        ipcRenderer.send('deletebynomer',params)
+        
+      },
       updateByNumber:function(){
         var params = {
           nomer:$('#nomer_id').val(),
@@ -57,6 +64,9 @@ function(n) {
         $('#ubah').click(function(){
           ipc.messaging.updateByNumber()
         })
+        $('#delete-by-number').click(function(){
+          ipc.messaging.deleteByNumber()
+        })
       }
     };
 
@@ -85,4 +95,11 @@ ipcRenderer.on('getAllDataSucess',function(event,response){
 })
 ipcRenderer.on('updateResponse',function(event,response){
   console.log(response)
+})
+ipcRenderer.on('getDeleteSucess',function(event,response){
+  $('#inputBro').click(function(){
+    $(this).closest('form').find("input[type=text],input[type=number],textarea").val("");
+});
+  console.log(response)
+  console.log("succes delete")
 })

@@ -1,8 +1,7 @@
 
 module.exports = function(ipcMain){
-    ipcMain.on('haspagination',function(event,data){
-    // let action = 
-    //     event.sender.send('paginationresult',action)
+    ipcMain.on('RefreshOn',function(event,data){
+     event.sender.send('AlreadyRefresh')
     })
 }
 

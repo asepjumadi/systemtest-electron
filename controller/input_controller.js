@@ -27,18 +27,7 @@ var connection = mysql.createConnection({
       
     })
     ipcMain.on('updateNowbyNumber',function(event,data){
-        var no=[
-            data.nomer
-        ]
-    //     var response = [
-    //         data.nomer,
-    //         data.code,
-    //         data.tanggaltrima,
-    //         data.nomorTanggal,
-    //         data.asalsurat,
-    //         data.isiringkasan,
-    //         data.keterangan,
-    // ]
+        
     var response = {
         no:data.nomer,
         code:data.code,
@@ -50,7 +39,6 @@ var connection = mysql.createConnection({
     }
            
         let sql = "UPDATE undangan SET no, code ,tanggal_terima , nomer_tanggal ,asal_surat ,isi_ringkasan ,keterangan  WHERE no? "
- console.log(response[0])
 // execute the UPDATE statement
             connection.query(sql,response, function(error, result, fields){
             
@@ -76,5 +64,17 @@ var connection = mysql.createConnection({
             console.log('kosong2')
         })
         console.log(data)
+    })
+    ipcMain.on('deletebynomer',function(event,data){
+        var response={
+            no:data.nomer
+        }
+        connection.query("DELETE  FROM undangan WHERE ? ",response,function(error,result,field){
+            event.sender.send('getDeleteSucess', result)
+            console.log('delete clear')
+            console.log(result)
+            console.log('kosong2')
+        })
+        
     })
  }
