@@ -3544,6 +3544,11 @@ pretty-ms@^5.0.0:
   dependencies:
     parse-ms "^2.1.0"
 
+print-js@^1.0.61:
+  version "1.0.61"
+  resolved "https://registry.yarnpkg.com/print-js/-/print-js-1.0.61.tgz#6e6079f636c04fc34f23fa561f0b8fced32e36d3"
+  integrity sha512-H/GhVZMroI7qqXH+6LrtFacLOcapRIUrcJD4F4BONZFTk6VtmGC2dqQydzW4RYJpfsCxNUg2Tyi7A46zKC3wmQ==
+
 process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"

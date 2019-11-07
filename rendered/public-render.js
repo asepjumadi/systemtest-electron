@@ -52,12 +52,16 @@ function(n) {
       },
 
       init: function() {
+        // $('#tambah').click( function () {
+        //   ipc.messaging.sendOpenAddEvent()
+        //   $('#inputBro').click(function(){
+        //     $(this).closest('form').find("input[type=text],input[type=number],textarea").val().reset();
+        // });
+        // })
         $('#tambah').click( function () {
           ipc.messaging.sendOpenAddEvent()
-          $('#inputBro').click(function(){
-            $(this).closest('form').find("input[type=text],input[type=number],textarea").val("");
-        });
-        });
+          document.getElementById("inputBro").reset();
+        })
         $('#open-search-button').click( function () {
           ipc.messaging.sendOpenSecondWindowEvent()
         })

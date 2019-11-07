@@ -27,27 +27,17 @@ var connection = mysql.createConnection({
       
     })
     ipcMain.on('updateNowbyNumber',function(event,data){
-        
-    var response = {
-        no:data.nomer,
-        code:data.code,
-        tanggal_terima:data.tanggaltrima,
-        nomer_tanggal:data.nomorTanggal,
-        asal_surat:data.asalsurat,
-        isi_ringkasan:data.isiringkasan,
-        keterangan:data.keterangan,
-    }
-           
-        let sql = "UPDATE undangan SET no, code ,tanggal_terima , nomer_tanggal ,asal_surat ,isi_ringkasan ,keterangan  WHERE no? "
+
 // execute the UPDATE statement
-            connection.query(sql,response, function(error, result, fields){
-            
-            console.log(result)
-            console.log('hasil')
-            event.sender.send('updateResponse', result)
+            connection.query('UPDATE `undangan` SET code` = ? ,`tanggal_terima` = ? , `nomer_tanggal` = ?,`asal_surat` = ?,`isi_ringkasan` = ?,`keterangan` =? WHERE `undangan`,`no` = ?',[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
+            console.log(event.sender.send('updateResponse', result+"data succes been execute"))
+            event.sender.send('updateResponse',result+"data succes been execute")
             });
-            console.log(connection.query(sql,response, function(error, result, fields){
-                }))
+            // console.log(connection.query(`UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?,asal_surat = ?,isi_ringkasan = ?,keterangan =? WHERE no = ?`,[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
+
+            //     }))
+        
+          
     
     })
     ipcMain.on('add-clean',function(event,data){

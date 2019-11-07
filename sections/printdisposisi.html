@@ -1,0 +1,35 @@
+<template class="section-template">
+    <section id="print-disposisi" class="wrapper style3">
+    <div class="container" >
+        <div class="card-body" id="printJS-form">
+                <div class="flex-column"  style="margin-top: 80px;" >
+                        <div class="d-flex ">
+                              <div class="flex-column col-6 ">
+                                      <h3 class="font-weight-bold proh3" >LEMBAR DISPOSISI</h3>
+                                      <hr size="50px" style="margin-top: -5px;"  width="400px" color="black">
+                                      <hr size="50px" style="margin-top: -13px;"  width="400px" color="black" >
+                                      <div class="col-12 d-flex">
+              
+                                      </div>
+                              </div>
+                              <div class="flex-column col-6">
+                                      <h3 class="font-weight-bold proh3"  >LEMBAR DISPOSISI</h3>
+                                      <hr size="50px" style="margin-top: -5px;"  width="400px" color="black">
+                                      <hr size="50px" style="margin-top: -13px;"  width="400px" color="black" >
+                                      <div class="col-12 d-flex">
+              
+                                      </div>
+                              </div>
+                        </div>
+                    </div>
+            </div>
+    </div>
+      <style>
+      .proh3{
+        text-align: center;
+
+      }
+      </style>
+      <input type="button" title="Print" value="Print" class="btn btn-primary" onclick="printJS({printable:'printJS-form',type:'html',targetStyles: ['margin','font-size','text-align','font-weight','border']})">
+    </section>
+    </template>
