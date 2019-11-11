@@ -2,18 +2,30 @@
     <section id="print-disposisi" class="wrapper style3">
     <div class="container" >
         <div class="card-body" id="printJS-form">
-                <div class="flex-column"  style="margin-top: 80px;" >
+                <div class="flex-column"  style="margin-top: 30px;" >
                         <div class="d-flex ">
                               <div class="flex-column col-6 ">
-                                      <h3 class="font-weight-bold proh3" >LEMBAR DISPOSISI</h3>
-                                      <hr size="50px" style="margin-top: -5px;"  width="400px" color="black">
-                                      <hr size="50px" style="margin-top: -13px;"  width="400px" color="black" >
-                                      <div class="col-12 d-flex">
-              
-                                      </div>
+                                  <table>
+                                        <tr class="title">
+                                                <td colspan="6" ><p class="center" style="font-weight: bold;font-size: 30px;">LEMBAR DISPOSISI</p></td>
+                                            </tr>
+                                      <tr>
+                                            <table class="col-12 ">
+                                                <tr class="" style="border-top: 1px solid rgb(97,89,89);border-bottom: 1px solid rgb(97,89,89);">
+                                                    <td class="paddingL"><p class="center" >INDEX</p></td>
+                                                    <td class="paddingL"><p class="center" > KODE</p></td>
+                                                    <td class="paddingL"><p class="center" >Nomor Urut</p></td>
+                                                    <td><p class="center">Tgl.Penyelesaian</p></td>
+                                                </tr>
+                                            </table>
+                                      </tr>
+                                  </table>
+                                     
+                                    
+                                           
                               </div>
                               <div class="flex-column col-6">
-                                      <h3 class="font-weight-bold proh3"  >LEMBAR DISPOSISI</h3>
+                                      <h4 class="font-weight-bold proh3"  >LEMBAR DISPOSISI</h4>
                                       <hr size="50px" style="margin-top: -5px;"  width="400px" color="black">
                                       <hr size="50px" style="margin-top: -13px;"  width="400px" color="black" >
                                       <div class="col-12 d-flex">
@@ -22,14 +34,66 @@
                               </div>
                         </div>
                     </div>
+                    <div class="d-flex ">
+                            <div class="flex-column col-6 ">
+                                    <h4 class="font-weight-bold proh3" >LEMBAR DISPOSISI</h4>
+                                    <hr size="50px" style="margin-top: -5px;"  width="400px" color="black">
+                                    <hr size="50px" style="margin-top: -13px;"  width="400px" color="black" >
+                                    <div class="col-12 d-flex">
+                                          <div class="col-3 flex-column" style="width: 20%;height: 20%;">
+                                              <p>INDEX</p>
+                                          </div>
+                                          <div class="col-3 flex-column" style="width: 20%;height: 20%;">
+                                              <p>KODE</p>
+                                          </div>
+                                          <div class="col-3 flex-column" style="width: 20%;height: 20%;">
+                                              <p>Nomor Urut</p>
+                                          </div>
+                                          <div class="col-3 flex-column" style="width: 20%;height: 20%;">
+                                              <p>Tgl. Penyelesaian</p>
+                                          </div>
+                                    </div>
+                            </div>
+                            <div class="flex-column col-6">
+                                    <h4 class="font-weight-bold proh3"  >LEMBAR DISPOSISI</h4>
+                                    <hr size="50px" style="margin-top: -5px;"  width="400px" color="black">
+                                    <hr size="50px" style="margin-top: -13px;"  width="400px" color="black" >
+                                    <div class="col-12 d-flex">
+            
+                                    </div>
+                            </div>
+                      </div>
+                  </div>
             </div>
+            <input type="button" title="Print" value="Print" class="btn btn-primary" onclick="print()">
     </div>
       <style>
       .proh3{
         text-align: center;
 
       }
+      tr.title td {
+	border-left: 0px solid;
+	border-right: 0px solid;
+        }
+    table.report{
+        border-top:1px solid rgb(150, 150, 150);
+        border-bottom: 1px solid rgb(150, 150, 150) ;
+    border-left: 0px solid;
+            border-right: 0px solid;
+    }
+    p.center {
+	padding-top: 5px;
+    text-align: center;
+    }
+    h4.center {
+	padding-top: 5px;
+    text-align: center;
+    }
+    td.paddingL{
+        border-right: 1px solid rgb(97, 89, 89);
+    }
       </style>
-      <input type="button" title="Print" value="Print" class="btn btn-primary" onclick="printJS({printable:'printJS-form',type:'html',targetStyles: ['margin','font-size','text-align','font-weight','border']})">
+      
     </section>
     </template>
