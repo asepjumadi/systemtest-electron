@@ -29,3 +29,16 @@ function print(quality = 2) {
         pdf.save(filename);
     });
 }
+
+
+function printkksm(quality = 2) {
+  const filename  = 'ThisIsYourPDFFilename.pdf';
+
+  html2canvas(document.querySelector('#printJS-forms'), 
+                          {scale: quality}
+                   ).then(canvas => {
+      let pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.addImage(canvas.toDataURL('image/png'), 'JPEG', 0, 0, 211, 298);
+      pdf.save(filename);
+  });
+}

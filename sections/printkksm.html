@@ -1,7 +1,7 @@
 <template class="section-template">
     <section id="print-kksm" class="wrapper style3">
         <div class="container">
-
+          <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printkksm()"></button>
                 <style>
                   td {
                       height: 80%;
@@ -9,8 +9,8 @@
                   }
                   </style>
 
-            <div class="card-body" id="printJS-form">
-               <div class="flex-column" style="margin-top: 80px;">
+            <div class="card-body" id="printJS-forms">
+               <div class="flex-column" style="margin-top: 10px;">
                      <div class="d-flex" >
                          <div class="flex-column col-6">
                             <h6 style="text-align: center;">PEMERINTAH KABUPATEN SLEMAN</h6>
@@ -20,7 +20,7 @@
         <table class="table" rules="all" border="0" style="height: 80%; width: 30%; writing-mode: vertical-rl;">
           <tr>
             <td style="vertical-align: bottom; font-size: 12px;" colspan="3"><br>indeks:</td>
-            <td style="vertical-align: bottom; font-size: 12px;"><br>Kode:</td>
+            <td style="vertical-align: bottom; font-size: 12px;"><br id="kde">Kode:</td>
             <td style="vertical-align: bottom; font-size: 12px;"><br>No.Urut:</td>
           </tr> 
           <tr>
@@ -96,7 +96,7 @@
                                  <h5 style="text-align: center;">KARTU KENDALI SURAT MASUK</h5>
                                  <table class="table" rules="all" border="0" style="height: 80%; width: 30%; writing-mode: vertical-rl;">
                                   <tr>
-                                    <td style="vertical-align: bottom; font-size: 12px;" colspan="3"><br>indeks:</td>
+                                    <td id="test" style="vertical-align: bottom; font-size: 12px;" colspan="3"><br><span>indeks:</span></td>
                                     <td style="vertical-align: bottom; font-size: 12px;"><br>Kode:</td>
                                     <td style="vertical-align: bottom; font-size: 12px;"><br>No.Urut:</td>
                                   </tr> 
@@ -163,9 +163,28 @@
                         </div>
                 </div>
             </div>
+           
         </div>
 
-    
+    <script>
+    var ctx = document.getElementById('test').getContext('2d');
+
+ctx.fillStyle = '#747573';
+ctx.fillRect(0, 0, 30, 80);
+
+ctx.rotate( 90*Math.PI/180 );
+ctx.fillStyle = '#fff';
+
+var fontSize = '14px';
+ctx.font = fontSize+" Arial";
+
+var txt = 'Hello';
+
+// can be used for positioning
+//var twidth = ctx.measureText(txt).width;
+
+ctx.fillText(txt, 0, 0);
+    </script>
 
     </section>
     </template>
