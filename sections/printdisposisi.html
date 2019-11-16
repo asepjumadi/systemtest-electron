@@ -1,8 +1,24 @@
 <template class="section-template">
     <section id="print-disposisi" class="wrapper style3">
     <div class="container" >
-        <input type="button" title="Download" value="Download dan Print" class="btn btn-primary" onclick="print()">
-        <!-- <input type="button" title="Print"  value="Print" class="btn btn-primary" onclick="printJS({ printable: 'printJS-form', type: 'html', scanStyles:true,targetStyles:['*']})"> -->
+        <div class="d-flex">
+                
+                <form class="form-inline col-12">
+                        <div class="form-group form-inline justify-content-between col-3 ">
+                                <label for="exampleInputEmail1"> Nomor</label>
+                                    <input type="text" class="col-sm-6 col-form-label" maxlength="7" id="nomer_ok" aria-describedby="emailHelp" >
+                              </div>
+                        <div class="form-group form-inline justify-content-between col-3">
+                                <label for="exampleInputEmail1"><small>Warna Kertas</small> </label>
+                                <input type="button" class="btn-circle btn-warning" value="C" onclick="changeColorToSecondaryDis()">
+ 
+    <input type="button" class="btn-circle btn-outline-warning" value="P" onclick="changeColorToPrimaryDis()" >
+                        </div>
+                              <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-success mr-20" onclick="">
+                              <input type="button" title="Download" value="Print Disposisi KKSM" class="btn btn-primary" onclick="print()">
+                    </form>
+                
+        </div>
         <div class="card-body" id="printJS-form">
                 <div class="flex-column"  style="margin-top: 30px;" >
                         <div class="d-flex ">

@@ -54,3 +54,20 @@ function printall(quality = 2) {
       pdf.save(filename);
   });
 }
+
+function changeColorToPrimaryDis(){
+  document.getElementById('printJS-form').style.backgroundColor="white";
+
+}
+function changeColorToSecondaryDis(){
+  document.getElementById('printJS-form').style.backgroundColor="yellow";
+
+}
+function changeColorToPrimaryKksm(){
+  document.getElementById('printJS-forms').style.backgroundColor="white";
+
+}
+function changeColorToSecondaryKksm(){
+  document.getElementById('printJS-forms').style.backgroundColor="pink";
+
+}
