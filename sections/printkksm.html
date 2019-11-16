@@ -1,37 +1,25 @@
 <template class="section-template">
     <section id="print-kksm" class="wrapper style3">
         <div class="container">
-          <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printkksm()"></button>
-                <style>
-                  td {
-                      height: 80%;
-                      vertical-align: text-top;
-                  }
-                  </style>
+          <input type="button" value="Download KKSM" title="Print KKSM" class="btn btn-primary" onclick="printkksm()"></button>
+          <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printJS({ printable: 'printJS-forms', type: 'html', header: 'PrintJS - Form Element Selection' })">
 
             <div class="card-body" id="printJS-forms">
                <div class="flex-column" style="margin-top: 10px;">
                      <div class="d-flex" >
-                         <div class="flex-column col-6">
+                         <div class="col-6 kksm">
                             
                 
                          </div>
-                          <div class="flex-column col-6">
+                          <div class="col-6 kksm">
                             
                           </div>
                       </div>
-
-
-       
-
-
                         <div class="d-flex" >
-                              <div class="flex-column col-6">
+                              <div class="col-6 kksm">
                                
                              </div>
-                        <div class="flex-column col-6">
-                          
-
+                        <div class="col-6 kksm">
 
                           </div>
                         </div>

@@ -1,6 +1,9 @@
 .kksm {
-    background: url('./images/kksm.png') no-repeat;
+    background: url('./images/skm.png') no-repeat;
     width: 105mm;
     height: 160mm;
     background-size: contain;
+    -webkit-print-color-adjust: exact;
 }
+
+/*!
