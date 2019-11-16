@@ -2,7 +2,7 @@ const jsPDF = require('jspdf')
 const html2canvas =require('html2canvas')
 
 function print(quality = 2) {
-    const filename  = 'ThisIsYourPDFFilename.pdf';
+    const filename  = 'DisposisiPrintOut.pdf';
     var bigCanvas = $("<div>").appendTo('body');  // This will be the 3x sized canvas we're going to render
     var scaledElement = $("#printJS-form").clone()
     .css({
@@ -32,7 +32,7 @@ function print(quality = 2) {
 
 
 function printkksm(quality = 2) {
-  const filename  = 'ThisIsYourPDFFilename.pdf';
+  const filename  = 'kksmFileOfPrint.pdf';
 
   html2canvas(document.querySelector('#printJS-forms'), 
                           {scale: quality}
@@ -43,3 +43,14 @@ function printkksm(quality = 2) {
   });
 }
 
+function printall(quality = 2) {
+  const filename  = 'AlldataAfterRender.pdf';
+
+  html2canvas(document.querySelector('#dataTable'), 
+                          {scale: quality}
+                   ).then(canvas => {
+      let pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+      pdf.save(filename);
+  });
+}

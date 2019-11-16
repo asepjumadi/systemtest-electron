@@ -4,8 +4,8 @@ function(n) {
       constants: {
         sectionTemplate: '.section-template',
         contentContainer: '#wrapper',
-        startSectionMenuItem: '#welcome-menu',
-        startSection: '#dashboard'
+        startSectionMenuItem: '#dialog-menu',
+        startSection: '#tabel'
       },
 
       importSectionsToDOM: function() {

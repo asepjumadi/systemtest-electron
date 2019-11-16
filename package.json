@@ -13,6 +13,7 @@
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^14.0.6",
     "electron-winstaller": "^4.0.0",
+    "exceljs": "^3.4.0",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "mysql": "^2.17.1",
