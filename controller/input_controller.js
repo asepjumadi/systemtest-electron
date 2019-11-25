@@ -36,9 +36,6 @@ var connection = mysql.createConnection({
             // console.log(connection.query(`UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?,asal_surat = ?,isi_ringkasan = ?,keterangan =? WHERE no = ?`,[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
 
             //     }))
-        
-          
-    
     })
     ipcMain.on('add-clean',function(event,data){
         event.sender.send('feedback-add',null)
@@ -68,4 +65,32 @@ var connection = mysql.createConnection({
         })
         
     })
+
+    ipcMain.on('show4KksmData',function(event,data){
+        console.log("ok gaes data dari kksm saya terima")
+        console.log(data)
+        
+        connection.query("SELECT * FROM undangan WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
+            event.sender.send('getkksmSucess', result)
+            console.log('data hasbeen show ')
+            console.log(result)
+            console.log('kosong2')
+        })
+        
+    })
+
+    ipcMain.on('showDisposisiData',function(event,data){
+        console.log("ok gaes data dari kksm saya terima")
+        console.log(data)
+        
+        connection.query("SELECT * FROM undangan WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
+            event.sender.send('getDisposisiSucces', result)
+            console.log('data hasbeen show ')
+            console.log(result)
+            console.log('kosong2')
+        })
+        
+    })
+
+       
  }

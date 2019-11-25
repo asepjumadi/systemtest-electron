@@ -5,5 +5,22 @@
     background-size: contain;
     -webkit-print-color-adjust: exact;
 }
-
+.tops{
+    height:15mm;
+}
+.mid1th{
+    height: 16mm;
+}
+.bottoms{
+    height: 20mm;
+}
+.mid2nd{
+    height: 12mm;
+}
+.bottom1th{
+    height:16 ;
+}
+.bottom2nd{
+    height: 15;
+}
 /*!

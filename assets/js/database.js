@@ -115,6 +115,7 @@ function readTable(){
             });
            
         }
+        
 function getFirstTenRows(callback){
     var mysql = require('mysql');
 

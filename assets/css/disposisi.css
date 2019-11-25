@@ -9,3 +9,17 @@
     -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
     color-adjust: exact !important;                 /*Firefox*/
 }
+.tops{
+
+}
+.midle1{
+height: 32mm;
+margin-left: 8mm;
+margin-right: 20mm;
+}
+.midle2{
+height: 15mm;
+}
+.bottoms{
+height: 100mm;
+}

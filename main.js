@@ -40,7 +40,7 @@ function createWindow() {
     }
 })
 
-mainWindow.webContents.openDevTools()
+// mainWindow.webContents.openDevTools()
 mainWindow.loadURL(`file://${__dirname}/index.html`||'http://'+server.host+':'+server.port+'/')
 
 mainWindow.once('ready-to-show',()=>{
@@ -75,7 +75,7 @@ ipcMain.on('open-search-window',(event,arg)=>{
 })
 
 ipcMain.on('close-search-window',(event,arg)=>{
-    console.log('hid3 only')
+    console.log('hnourut only')
     secondWindow=null;
     // event.sender.send('already-close',(event,data)=>{
     //     secondWindow=null;

@@ -60,7 +60,7 @@ function changeColorToPrimaryDis(){
 
 }
 function changeColorToSecondaryDis(){
-  document.getElementById('printJS-form').style.backgroundColor="yellow";
+  document.getElementById('printJS-form').style.backgroundColor="#eef089";
 
 }
 function changeColorToPrimaryKksm(){
@@ -71,3 +71,24 @@ function changeColorToSecondaryKksm(){
   document.getElementById('printJS-forms').style.backgroundColor="pink";
 
 }
+
+function range(start, end) {
+  var ans = [];
+  for (let i = start; i <= end; i++) {
+      ans.push(i);
+  }
+  console.log(start)
+  console.log(end)
+  return ans;
+}
+function pengolah(){
+  $('#namapengolah1').html($('#pname').val().toString())
+  $('#namapengolah2').html($('#pname').val().toString())
+  $('#namapengolah3').html($('#pname').val().toString())
+  $('#namapengolah4').html($('#pname').val().toString())
+}
+
+
+
+
+
