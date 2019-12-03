@@ -15,11 +15,7 @@ function(n) {
       sendCloseSecondWindowEvent: function() {
         ipcRenderer.send('close-second-window', 'an-argument')
       },
-      sendAddKksm:function(){
-        var params={
-          
-        }
-      },
+
       openSearchByNumber:function(){
         var params = {
           nomer:$('#nomer_id').val(),
@@ -79,6 +75,85 @@ function(n) {
         }
         ipcRenderer.send('showDisposisiData',params)
       },
+      //for send  insert data kksm
+      sendAddKksm:function(){
+          var dirtsyTglTrima = $('#tanggaltrimakksm').val();
+          var date2 = new Date(dirtsyTglTrima);
+          var cleanTglTrima=date2.toLocaleDateString("id-ID");
+
+          var dirtytglsurat=$('#tanggalsurat').val();
+          var datenew1 = new Date(dirtytglsurat);
+          var cleanTglSurat=datenew1.toLocaleDateString("id-ID");
+
+          var dirtytglacara =$('#tanggalacara').val();
+          var datenew2 = new Date(dirtytglacara);
+          var cleanTglAcara=datenew2.toLocaleDateString("id-ID");
+  // console.log(cleanTglTrima)
+        var params={
+          no:$('#nomerkksm').val(),
+          code:$('#codekksm').val(),
+          tgltrima:cleanTglTrima,
+          nomorsurat:$('#nomorsurat').val(),
+          tanggalsurat:cleanTglSurat,
+          asalsurat:$('#asalsuratkksm').val(),
+          hariacara:$('#hariacara').val(),
+          tanggalacara:cleanTglAcara,
+          jamacara:$('#jamacara').val(),
+          tempatacara:$('#tempatacara').val(),
+          acara:$('#acara').val(),
+          unitpelaksana:$('#unitpelaksana').val(),
+        }
+        ipcRenderer.send('sendAddKksm',params)
+        console.log('normal format')
+        console.log(params)
+      },
+
+      updateAllKksm:function(){
+        var dirtsyTglTrima = $('#tanggaltrimakksm').val();
+        var date2 = new Date(dirtsyTglTrima);
+        var cleanTglTrima=date2.toLocaleDateString("id-ID");
+
+        var dirtytglsurat=$('#tanggalsurat').val();
+        var datenew1 = new Date(dirtytglsurat);
+        var cleanTglSurat=datenew1.toLocaleDateString("id-ID");
+
+        var dirtytglacara =$('#tanggalacara').val();
+        var datenew2 = new Date(dirtytglacara);
+        var cleanTglAcara=datenew2.toLocaleDateString("id-ID");
+// console.log(cleanTglTrima)
+      var params={
+        no:$('#nomerkksm').val(),
+        code:$('#codekksm').val(),
+        tgltrima:cleanTglTrima,
+        nomorsurat:$('#nomorsurat').val(),
+        tanggalsurat:cleanTglSurat,
+        asalsurat:$('#asalsuratkksm').val(),
+        hariacara:$('#hariacara').val(),
+        tanggalacara:cleanTglAcara,
+        jamacara:$('#jamacara').val(),
+        tempatacara:$('#tempatacara').val(),
+        acara:$('#acara').val(),
+        unitpelaksana:$('#unitpelaksana').val(),
+      }
+      ipcRenderer.send('updateAlKksm',params)
+      console.log('normal format')
+      console.log(params)
+    },
+    searchKksmByNumber:function(){
+      var params = {
+        nomer:$('#nomer_kksm').val(),
+      }
+      ipcRenderer.send('searchKksmByNumbers',params)
+      
+    },
+    deleteKksmByNumber:function(){
+      var params = {
+        nomer:$('#nomer_kksm').val(),
+      }
+      console.log($('#nomerkksm').val())
+      ipcRenderer.send('deleteKksmbynomer',params)
+      
+    },
       init: function() {
         // $('#tambah').click( function () {
         //   ipc.messaging.sendOpenAddEvent()
@@ -86,9 +161,14 @@ function(n) {
         //     $(this).closest('form').find("input[type=text],input[type=number],textarea").val().reset();
         // });
         // })
+        //inputalldatakksm
         $('#tambah').click( function () {
           ipc.messaging.sendOpenAddEvent()
           document.getElementById("inputBro").reset();
+        })
+        $('#tambahksm').click( function () {
+          ipc.messaging.sendOpenAddEvent()
+          document.getElementById("inputalldatakksm").reset();
         })
         $('#open-search-button').click( function () {
           ipc.messaging.sendOpenSecondWindowEvent()
@@ -115,6 +195,18 @@ function(n) {
         $('#showDisposisiData').click(function(){
           ipc.messaging.showDisposisiData()
         })
+        $('#simpankksm').click(function(){
+          ipc.messaging.sendAddKksm()
+        })
+        $('#ubahkksm').click(function(){
+          ipc.messaging.updateAllKksm()
+        })
+        $('#search-by-numberkkm').click(function(){
+          ipc.messaging.searchKksmByNumber()
+        })
+        $('#delete-by-numberkksm').click(function(){
+          ipc.messaging.deleteKksmByNumber()
+        })
       }
     };
 
@@ -123,6 +215,7 @@ function(n) {
     })
 
 }(jQuery);
+
 
 ipcRenderer.on('feedback-add',function(event,response){
   console.log(response)
@@ -179,11 +272,13 @@ ipcRenderer.on('getDisposisiSucces',function(event,response){
         }else{
           var tglsurat1= '-'
         }
+
         if(array[0]!=undefined){
           var nomersurat=array[0]
         }else{
           var nomersurat= '-'
         }
+
       var clonerow=$('#printJS-form > div:first-child').clone()
       $(clonerow).find('#codes1').text(element.code);
       $(clonerow).find('#nouruts1').text(element.no);
@@ -201,6 +296,7 @@ ipcRenderer.on('getDisposisiSucces',function(event,response){
 
 
 })
+
 
 ipcRenderer.on('getkksmSucess',function(event,response){
   // console.log("this event will be involve")
@@ -240,4 +336,80 @@ ipcRenderer.on('getkksmSucess',function(event,response){
   });
     $('#idkksm > div').first().remove();
 
+})
+
+
+ipcRenderer.on('succesInsertKksm',function(event,response){
+  console.log('result of kksm')
+  console.log(response)
+
+})
+//searchKksmSucess
+ipcRenderer.on('searchKksmSucess',function(event,response){
+  console.log(response)
+  console.log('one -kksm in')
+  if(response[0]==undefined){
+    console.log('undefined only')
+    var dy=["1111"]
+    var dm=["11"]
+    var dd=["11"]
+    var Dates=[dy,dm,dd]
+    var nullDate=Dates.join("-")
+    $('#nomerkksm').val(0);
+    $('#codekksm').val("Kode surat tidak ditemukan");
+    $('#tanggaltrimakksm').val(nullDate);
+    $('#nomorsurat').val("nomer surat tidak ditemukan");
+    $('#tanggalsurat').val(nullDate);
+    $('#asalsuratkksm').val("Asal Surat tidak ditemukan");
+    $('#hariacara').val("hari tidak ditemukan");
+    $('#tanggalacara').val(nullDate);
+    $('#jamacara').val("Jam acara tidak ditemukan");
+    $('#tempatacara').val("Tempat acara tidak ditemukan");
+    $('#acara').val("Acara tidak ditemukan");
+    $('#unitpelaksana').val("Unit pelaksana tidak ditemukan");  
+  }else if(response[0]!=undefined){
+    console.log(response[0])
+          var TglTrima = response[0].tgl_terima;
+          var datafirst= TglTrima.split("/")
+          var day2=datafirst[0]
+          var month2=datafirst[1]
+          var year2 =datafirst[2]
+          var fulldate2=[year2,month2,day2]
+          var fullTglTrima= fulldate2.join("-")
+
+          var defaulttglsurat=response[0].tgl_surat;
+          var datasecond= defaulttglsurat.split("/")
+          var day1=datasecond[0]
+          var month1=datasecond[1]
+          var year1 =datasecond[2]
+          var fulldate1=[year1,month1,day1]
+          var fulltglsurat= fulldate1.join("-")
+
+          var deafulttglacara =response[0].tgl;
+          var data1= deafulttglacara.split("/")
+          var day=data1[0]
+          var month=data1[1]
+          var year =data1[2]
+          var fulldate=[year,month,day]
+          var fulldateyear= fulldate.join("-")
+        console.log(data1)
+          console.log(deafulttglacara)
+          console.log(fulldate)
+          console.log(fulldateyear)
+    $('#nomerkksm').val(response[0].no);
+    $('#codekksm').val(response[0].kode);
+    $('#tanggaltrimakksm').val(fullTglTrima);
+    $('#nomorsurat').val(response[0].no_surat);
+    $('#tanggalsurat').val(fulltglsurat);
+    $('#asalsuratkksm').val(response[0].asal_surat);
+    $('#hariacara').val(response[0].hari);
+    $('#tanggalacara').val(fulldateyear);
+    $('#jamacara').val(response[0].jam);
+    $('#tempatacara').val(response[0].tempat);
+    $('#acara').val(response[0].acara);
+    $('#unitpelaksana').val(response[0].unit_pelaksana);
+  }
+})
+ipcRenderer.on('getDeletekksmSucess',function(event,response){
+  console.log(response)
 })

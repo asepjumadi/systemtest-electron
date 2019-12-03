@@ -10,7 +10,7 @@
                 <div class="form-inline col-12 justify-content-between">
                         <div class="form-group form-inline justify-content-between col-3 ">
                                 <label for="exampleInputEmail1">Nomor</label>
-                                <input type="number" class="col-sm-8 col-form-label" id="nomer_id" aria-describedby="emailHelp" >
+                                <input type="number" class="col-sm-8 col-form-label" id="nomer_kksm" aria-describedby="emailHelp" >
                         </div>           
                         <input type="button" title="Cari" value="Cari"  class="btn btn-primary" id="search-by-numberkkm" onclick="console.log( 'hallo anda mengetik'+$('#nomer_id').val())">
                         <input  type="button" title="Delete" value="Delete"  class="btn btn-danger" id="delete-by-numberkksm" onclick="console.log( $('#delete-by-number').val())">
@@ -25,44 +25,42 @@
          </div>
         </div>
     </div>
-      
-          <form id="inputBro" action="/" method="GET">
-            <div class="card shadow mb-4">
-                    <div class="card-body">
-             
-          <div class="row  justify-content-between">
-                    <div class="form-group col-xl-6">
-                            <label for="exampleInputEmail1"  >No</label>
-                                <input type="number" class="col-xl-12 col-form-label" id="nomer" aria-describedby="emailHelp" >
-                            <label for="exampleInputPassword1">Kode Kalrifikasi</label>
-                                <input type="text" class="col-sm-12 col-form-label" id="code" >
-                            <label for="exampleInputPassword1">Tanggal Terima Surat</label>
-                                <input type="date" class="col-sm-12 col-form-label" id="tanggaltrima" >
-                            <label for="exampleInputPassword1">Nomor Surat Undangan </label>
-                                <input type="text" class="col-sm-12 col-form-label" id="nomorsurat" >
-                            <label for="exampleInputPassword1">Tanggal Surat</label>
-                                <input type="date" class="col-sm-12 col-form-label" id="tanggalsurat" >
-                            <label for="exampleInputPassword1">Asal Surat</label>
-                                <input type="text" class="col-sm-12 col-form-label" id="asalsurat" >
-                    </div>
-                    <div class="form-group col-xl-6">
-                            <label for="exampleInputPassword1">Hari</label>
-                                <input type="text" class="col-sm-12 col-form-label" id="hariacara" >
-                            <label for="exampleInputPassword1">Tangal</label>
-                                <input type="date" class="col-sm-12 col-form-label" id="tanggalacara" >
-                            <label for="exampleInputPassword1">Jam</label>
-                                <input type="time" class="col-sm-12 col-form-label" id="jamacara" >
-                            <label for="exampleInputPassword1">Tempat</label>
-                                <input type="text" class="col-sm-12 col-form-label" id="tempatacara" >
-                            <label for="exampleInputPassword1">Acara</label>
-                                <input type="text" class="col-sm-12 col-form-label" id="acara" >
-                            <label for="exampleInputPassword1">Unit Pelaksana</label>
-                                <input type="text" class="col-sm-12 col-form-label" id="unitpelaksana" >
-                    </div>   
+    <form id="inputalldatakksm" action="/" method="GET">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="row  justify-content-between">
+                        <div class="form-group col-xl-6">
+                                <label for="exampleInputEmail1"  >No</label>
+                                    <input type="number" class="col-xl-12 col-form-label" id="nomerkksm" aria-describedby="emailHelp" >
+                                <label for="exampleInputPassword1">Kode Kalrifikasi</label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="codekksm" >
+                                <label for="exampleInputPassword1">Tanggal Terima Surat</label>
+                                    <input type="date" class="col-sm-12 col-form-label" date  id="tanggaltrimakksm" >
+                                <label for="exampleInputPassword1">Nomor Surat Undangan </label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="nomorsurat" >
+                                <label for="exampleInputPassword1">Tanggal Surat</label>
+                                    <input type="date" class="col-sm-12 col-form-label"  id="tanggalsurat" >
+                                <label for="exampleInputPassword1">Asal Surat</label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="asalsuratkksm" >
+                        </div>
+                        <div class="form-group col-xl-6">
+                                <label for="exampleInputPassword1">Hari</label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="hariacara" >
+                                <label for="exampleInputPassword1">Tangal</label>
+                                    <input type="date" class="col-sm-12 col-form-label"   id="tanggalacara" >
+                                <label for="exampleInputPassword1">Jam</label>
+                                    <input type="time" class="col-sm-12 col-form-label" id="jamacara" >
+                                <label for="exampleInputPassword1">Tempat</label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="tempatacara" >
+                                <label for="exampleInputPassword1">Acara</label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="acara" >
+                                <label for="exampleInputPassword1">Unit Pelaksana</label>
+                                    <input type="text" class="col-sm-12 col-form-label" id="unitpelaksana" >
+                        </div>   
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-        </form>           
+    </form>           
   </div>
   </section>
 </template>

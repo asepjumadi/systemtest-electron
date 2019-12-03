@@ -90,6 +90,67 @@ var connection = mysql.createConnection({
             console.log('kosong2')
         })
     })
+//sendAddKksm
+    ipcMain.on('sendAddKksm',function(event,data){
+             //no
 
-       
+          // code
+// tgltrima
+// nomorsurat
+// tanggalsurat
+// asalsurat
+// hariacara
+// tanggalacara
+// jamacara
+// tempatacara
+// acara
+// unitpelaksana
+        var response = {
+            no:data.no,
+            kode:data.code,
+            tgl_terima:data.tgltrima,
+            no_surat:data.nomorsurat,
+            tgl_surat:data.tanggalsurat,
+            asal_surat:data.asalsurat,
+            hari:data.hariacara,
+            tgl:data.tanggalacara,
+            jam:data.jamacara,
+            tempat:data.tempatacara,
+            acara:data.acara,
+            unit_pelaksana:data.unitpelaksana,
+        }
+        connection.query("INSERT INTO kksm SET ?",response,function(error,result,field){
+            event.sender.send('succesInsertKksm', result)
+        })
+        console.log(response)
+    })
+    ipcMain.on('searchKksmByNumbers',function(event ,data){
+        var response={
+            no:data.nomer
+        }
+        console.log(data)
+        connection.query("SELECT `no`,`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana` FROM kksm WHERE ?",response,function(error,result,field){
+            event.sender.send('searchKksmSucess', result)
+            // console.log('kosong')
+            // console.log(result)
+            // console.log('kosong2')
+        })
+        console.log(data)
+    })
+    
+    ipcMain.on('deleteKksmbynomer',function(event,data){
+        var response={
+            no:data.nomer
+        }
+        connection.query("DELETE  FROM kksm WHERE ? ",response,function(error,result,field){
+            event.sender.send('getDeletekksmSucess', result)
+            // console.log('delete clear')
+            // console.log(result)
+            // console.log('kosong2')
+        })
+        
+    })
  }
+
+ 
+//deleteKksmbynomer
