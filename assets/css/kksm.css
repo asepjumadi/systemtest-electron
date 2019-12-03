@@ -1,26 +1,26 @@
 .kksm {
     background: url('./images/kksm.png') no-repeat;
-    width:  160mm;
-    height: 105mm;
+    width:  150mm;
+    height: 93mm;
     background-size: contain;
     -webkit-print-color-adjust: exact;
 }
 .tops{
-    height:15mm;
+    height:10mm;
 }
 .mid1th{
-    height: 16mm;
+    height: 14mm;
 }
 .bottoms{
-    height: 20mm;
+    height: 16mm;
 }
 .mid2nd{
-    height: 12mm;
+    height: 9mm;
 }
 .bottom1th{
-    height:16 ;
+    height: 10mm;
 }
 .bottom2nd{
-    height: 15;
+    height: 10mm;
 }
 /*!

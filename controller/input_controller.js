@@ -23,7 +23,7 @@ var connection = mysql.createConnection({
         connection.query("INSERT INTO undangan SET ?",response,function(error,result,field){
             event.sender.send('testclient', result)
         })
-        console.log(data)
+        // console.log(data)
       
     })
     ipcMain.on('updateNowbyNumber',function(event,data){
@@ -47,9 +47,9 @@ var connection = mysql.createConnection({
         console.log(data)
         connection.query("SELECT `no`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM undangan WHERE ?",response,function(error,result,field){
             event.sender.send('getAllDataSucess', result)
-            console.log('kosong')
-            console.log(result)
-            console.log('kosong2')
+            // console.log('kosong')
+            // console.log(result)
+            // console.log('kosong2')
         })
         console.log(data)
     })
@@ -59,22 +59,22 @@ var connection = mysql.createConnection({
         }
         connection.query("DELETE  FROM undangan WHERE ? ",response,function(error,result,field){
             event.sender.send('getDeleteSucess', result)
-            console.log('delete clear')
-            console.log(result)
-            console.log('kosong2')
+            // console.log('delete clear')
+            // console.log(result)
+            // console.log('kosong2')
         })
         
     })
 
     ipcMain.on('show4KksmData',function(event,data){
-        console.log("ok gaes data dari kksm saya terima")
-        console.log(data)
+        // console.log("ok gaes data dari kksm saya terima")
+        // console.log(data)
         
         connection.query("SELECT * FROM undangan WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
             event.sender.send('getkksmSucess', result)
-            console.log('data hasbeen show ')
-            console.log(result)
-            console.log('kosong2')
+            // console.log('data hasbeen show ')
+            // console.log(result)
+            // console.log('kosong2')
         })
         
     })
@@ -89,7 +89,6 @@ var connection = mysql.createConnection({
             console.log(result)
             console.log('kosong2')
         })
-        
     })
 
        

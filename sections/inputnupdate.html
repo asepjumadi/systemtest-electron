@@ -1,7 +1,11 @@
 <template class="section-template">
   <section id="inputupdate" class="wrapper style3">
       <div class="container" >
-          <H2>Input Undangan & Non-Undangan Masuk</H2>
+      <div class="card shadow mb-4">
+                <div class="card-body">
+          <H2>Non-Undangan Masuk</H2>
+        </div>
+      </div>
           <div class="card shadow mb-4">
               <div class="card-body">
       <div class="d-flex  justify-content-between">
@@ -36,8 +40,6 @@
                       <label for="exampleInputPassword1">Keterangan</label>
                       <input type="text" class="col-sm-12 col-form-label" id="keterangan" >
                   </div>
-                 
-                          
                           <input type="button" class="btn btn-success" onclick="inputDataToDatabase()" title="Simpan" value="Simpan Baru">
                           <!-- <button  class="btn btn-primary" >Simpan</button> -->
                           <input type="button" class="btn btn-outline-primary" title="Tambah" value="Tambah" id="tambah">
@@ -49,7 +51,6 @@
                     <label for="exampleInputEmail1">Nomor</label>
                         <input type="number" class="col-sm-8 col-form-label" id="nomer_id" aria-describedby="emailHelp" >
                   </div>
-                  <p>ol</p>
                   <input type="button" title="Cari" value="Cari"  class="btn btn-primary" id="search-by-number" onclick="console.log( 'hallo anda mengetik'+$('#nomer_id').val())">
                   <input  type="button" title="Delete" value="Delete"  class="btn btn-danger" id="delete-by-number" onclick="console.log( $('#delete-by-number').val())">
             </form>        

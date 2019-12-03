@@ -5,6 +5,9 @@
     background-size: contain;
     -webkit-print-color-adjust: exact;
 }
+.range{
+    margin-bottom: 100;
+}
 * {
     -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
     color-adjust: exact !important;                 /*Firefox*/
@@ -13,9 +16,9 @@
 
 }
 .midle1{
-height: 32mm;
+height: 27mm;
 margin-left: 8mm;
-margin-right: 20mm;
+margin-right: 10mm;
 }
 .midle2{
 height: 15mm;

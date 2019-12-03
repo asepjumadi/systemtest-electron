@@ -15,6 +15,11 @@ function(n) {
       sendCloseSecondWindowEvent: function() {
         ipcRenderer.send('close-second-window', 'an-argument')
       },
+      sendAddKksm:function(){
+        var params={
+          
+        }
+      },
       openSearchByNumber:function(){
         var params = {
           nomer:$('#nomer_id').val(),
@@ -150,150 +155,89 @@ ipcRenderer.on('getDeleteSucess',function(event,response){
 
 ipcRenderer.on('getDisposisiSucces',function(event,response){
   console.log(response)
-  array = [], c = 0;
-  array1=[], c= 0;
-  array2=[], c=0;
-  array3=[], c=0;
-  //abc(cba)ab(bac)c
-  response[0].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-  // Increase / decrease counter and push desired values to an array
-  e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array.push('(' + e + ')') : array.push(e)
-  );
-  console.log(array[1])
-  var tglsurat = array[1].split(/[()]/)
-  $('#codes1').html(response[0].code)
-  $('#nouruts1').html(response[0].no)
-  $('#isirings1').html(response[0].isi_ringkasan)
-  $('#keterangans1').html(response[0].keterangan)
-  $('#asalsurats1').html(response[0].asal_surat)
-  $('#tgltrimas1').html(response[0].tanggal_terima)
-  $('#nomortgls1').html(response[0].nomer_tanggal)
-  $('#tglsurats1').html(tglsurat)
+  var array = [], a = 0;
+
+  response.forEach(function(element,index) {
+    console.log(element.no)
+    var Sindex= 2 * index;
+    var no = element.no;
+   
+      array = [], c = 0;
+      element.nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
+        //Increase / decrease counter and push desired values to an array
+       e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array.push('(' + e + ')') : array.push(e)
+        );
+        // console.log(array)
+        console.log(array[0])
+        if(array[1]!=undefined){
+          var tglsurat = array[1].split(/[()]/)
+          if(tglsurat[1]!=undefined){
+            var tglsurat1=tglsurat[1]
+          }else{
+            var tglsurat1='-'
+          }
+        }else{
+          var tglsurat1= '-'
+        }
+        if(array[0]!=undefined){
+          var nomersurat=array[0]
+        }else{
+          var nomersurat= '-'
+        }
+      var clonerow=$('#printJS-form > div:first-child').clone()
+      $(clonerow).find('#codes1').text(element.code);
+      $(clonerow).find('#nouruts1').text(element.no);
+      $(clonerow).find('#isirings1').text(element.isi_ringkasan);
+      $(clonerow).find('#keterangans1').text(element.keterangan);
+      $(clonerow).find('#asalsurats1').text(element.asal_surat);
+      $(clonerow).find('#tgltrimas1').text(element.tanggal_terima);
+      $(clonerow).find('#nomortgls1').text(nomersurat);
+      $(clonerow).find('#tglsurats1').text(tglsurat1);
+      $(clonerow).appendTo("#printJS-form");
+ 
+    console.log(index+'and'+element.no)
+  });
+  $('#printJS-form > div:first-child ').remove();
 
 
-  //abc(cba)ab(bac)c
-  response[1].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-  // Increase / decrease counter and push desired values to an array
-  e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array1.push('(' + e + ')') : array1.push(e)
-  );
-  console.log(array1[1])
-  var tglsurat1 = array1[1].split(/[()]/)
-  $('#codes2').html(response[1].code)
-  $('#nouruts2').html(response[1].no)
-  $('#isirings2').html(response[1].isi_ringkasan)
-  $('#keterangans2').html(response[1].keterangan)
-  $('#asalsurats2').html(response[1].asal_surat)
-  $('#tgltrimas2').html(response[1].tanggal_terima)
-  $('#nomortgls2').html(response[1].nomer_tanggal)
-  $('#tglsurats2').html(tglsurat1)
-
-  //abc(cba)ab(bac)c
-  response[2].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-    // Increase / decrease counter and push desired values to an array
-    e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array2.push('(' + e + ')') : array2.push(e)
-    );
-    console.log(array2[1])
-    var tglsurat2 = array2[1].split(/[()]/)
-    $('#codes3').html(response[2].code)
-    $('#nouruts3').html(response[2].no)
-    $('#isirings3').html(response[2].isi_ringkasan)
-    $('#keterangans3').html(response[2].keterangan)
-    $('#asalsurats3').html(response[2].asal_surat)
-    $('#tgltrimas3').html(response[2].tanggal_terima)
-    $('#nomortgls3').html(response[2].nomer_tanggal)
-    $('#tglsurats3').html(tglsurat2)
-
-    response[3].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-      // Increase / decrease counter and push desired values to an array
-      e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array3.push('(' + e + ')') : array3.push(e)
-      );
-      console.log(array3[1])
-      var tglsurat3 = array3[1].split(/[()]/)
-      $('#codes4').html(response[3].code)
-      $('#nouruts4').html(response[3].no)
-      $('#isirings4').html(response[3].isi_ringkasan)
-      $('#keterangans4').html(response[3].keterangan)
-      $('#asalsurats4').html(response[3].asal_surat)
-      $('#tgltrimas4').html(response[3].tanggal_terima)
-      $('#nomortgls4').html(response[3].nomer_tanggal)
-      $('#tglsurats4').html(tglsurat3)
 })
-
-
 
 ipcRenderer.on('getkksmSucess',function(event,response){
   // console.log("this event will be involve")
   // console.log(response)
-  // console.log(response[0].nomer_tanggal.split())
-  
-  array = [], c = 0;
-  array1=[], c= 0;
-  array2=[], c=0;
-  array3=[], c=0;
-  //abc(cba)ab(bac)c
-  response[0].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-  // Increase / decrease counter and push desired values to an array
-  e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array.push('(' + e + ')') : array.push(e)
-  );
-  console.log(array[1])
-  var tglsurat = array[1].split(/[()]/)
-  $('#code1').html(response[0].code)
-  $('#nourut1').html(response[0].no)
-  $('#isiring1').html(response[0].isi_ringkasan)
-  $('#keterangan1').html(response[0].keterangan)
-  $('#asalsurat1').html(response[0].asal_surat)
-  $('#tgltrima1').html(response[0].tanggal_terima)
-  $('#nomortgl1').html(response[0].nomer_tanggal)
-  $('#tglsurat1').html(tglsurat)
+  response.forEach(element=>
+  {
+    array = [], c = 0;
+    element.nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
+      //Increase / decrease counter and push desired values to an array
+     e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array.push('(' + e + ')') : array.push(e)
+      );
+      // console.log(array)
+      console.log(array[1])
+      if(array[1]!=undefined){
+        var tglsurat = array[1].split(/[()]/)
+        if(tglsurat[1]!=undefined){
+          var tglsurat1=tglsurat[1]
+        }else{
+          var tglsurat1='-'
+        }
+      }else{
+        var tglsurat1= '-'
+      }
+     
+    console.log(element)
+    var data= $('#idkksm > div').first().clone();
+    $(data).find('#code1').text(element.code);
+    $(data).find('#nourut1').text(element.no);
+    $(data).find('#isiring1').text(element.isi_ringkasan);
+    $(data).find('#keterangan1').text(element.keterangan);
+    $(data).find('#asalsurat1').text(element.asal_surat);
+    $(data).find('#tgltrima1').text(element.tanggal_terima);
+    $(data).find('#nomortgl1').text(element.nomer_tanggal);
+    $(data).find('#tglsurat1').text(tglsurat1);
 
+    $('#idkksm').append(data);
+  });
+    $('#idkksm > div').first().remove();
 
-  response[1].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-    // Increase / decrease counter and push desired values to an array
-    e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array1.push('(' + e + ')') : array1.push(e)
-    );
-    console.log(array1[1])
-    var tglsurat1 = array1[1].split(/[()]/)
-
-
-  $('#code2').html(response[1].code)
-  $('#nourut2').html(response[1].no)
-  $('#isiring2').html(response[1].isi_ringkasan)
-  $('#keterangan2').html(response[1].keterangan)
-  $('#asalsurat2').html(response[1].asal_surat)
-  $('#tgltrima2').html(response[1].tanggal_terima)
-  $('#nomortgl2').html(response[1].nomer_tanggal)
-  $('#tglsurat2').html(tglsurat1)
-
-  response[2].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-    // Increase / decrease counter and push desired values to an array
-    e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array2.push('(' + e + ')') : array2.push(e)
-    );
-    console.log(array2[1])
-    var tglsurat2 = array2[1].split(/[()]/)
-
-
-  $('#code3').html(response[2].code)
-  $('#nourut3').html(response[2].no)
-  $('#isiring3').html(response[2].isi_ringkasan)
-  $('#keterangan3').html(response[2].keterangan)
-  $('#asalsurat3').html(response[2].asal_surat)
-  $('#tgltrima3').html(response[2].tanggal_terima)
-  $('#nomortgl3').html(response[2].nomer_tanggal)
-  $('#tglsurat3').html(tglsurat2)
-
-  response[3].nomer_tanggal.split(/([()])/).filter(Boolean).forEach(e =>
-    // Increase / decrease counter and push desired values to an array
-    e == '(' ? c++ : e == ')' ? c-- : c > 0 ? array3.push('(' + e + ')') : array3.push(e)
-    );
-    console.log(array3[1])
-    var tglsurat3 = array3[1].split(/[()]/)
-
-  $('#code4').html(response[3].code)
-  $('#nourut4').html(response[3].no)
-  $('#isiring4').html(response[3].isi_ringkasan)
-  $('#keterangan4').html(response[3].keterangan)
-  $('#asalsurat4').html(response[3].asal_surat)
-  $('#tgltrima4').html(response[3].tanggal_terima)
-  $('#nomortgl4').html(response[3].nomer_tanggal)
-  $('#tglsurat4').html(tglsurat3)
 })

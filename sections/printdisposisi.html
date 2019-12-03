@@ -1,136 +1,58 @@
 <template class="section-template">
     <section id="print-disposisi" class="wrapper style3">
-    <div class="container" >
-        <div class="d-flex">
-                
+        <div class="row">
+            <div class="col-12">
                 <form class="form-inline col-12">
-                    <div class="form-group form-inline justify-content-between col-3 ">
-                        <label for="exampleInputEmail1">Nomor</label>
-                            <input type="number" class="col-sm-4 col-form-label "   id="mulai1" aria-describedby="emailHelp" placeholder="in" >
-                            <input type="number" class="col-sm-4 col-form-label"  id="akhir1" aria-describedby="emailHelp" placeholder="out" >
-                      </div>
-                <div class="form-group form-inline justify-content-between col-3">
-                        <label for="exampleInputEmail1"><small> Warna Kertas</small> </label>
-                        <input type="button" class="btn-circle btn-warning" value="C" onclick="changeColorToSecondaryDis()">
-                        <input type="button" class="btn-circle btn-outline-warning" value="P" onclick="changeColorToPrimaryDis()" >
-                </div>
-                <div class="form-group form-inline justify-content-between col-3 ">
-                      <input type="text" class="col-sm-6 col-form-label "   id="pnames" aria-describedby="emailHelp" placeholder="nama" >
-                      <input type="button" class="btn btn-facebook "   id="btnpnames" value="Pengolah" onclick="pengolah()">
-                </div>
-                <!-- <input type="button" title="Print All KKSM"  value="Print All KKSM" class="btn btn-success mr-20" onclick="console.log('ok')" id="printAllKksm"> -->
-                      <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-outline-success mr-20" onclick="" id="showDisposisiData">
-                      <!-- <input type="button" title="Test System" value="Go here" class="btn btn-circle" onclick="console.log(range(0,100))"> -->
-                      <input type="button" value="Print KKSM" title="Print Disposisi" class="btn btn-primary" onclick="print()">
-
-                    </form>
-                
-        </div>
-        <div class="card-body" id="printJS-form">
-                <div class="flex-column"  style="margin-top: 30px;" >
-                        <div class="d-flex ">
-                              <div class="flex-column col-6 disposisi ">
-                                  <br><br><br>
-                                  <div class="d-flex col-12"> 
-                                          <div class="col-3"> <p class="text-left"> <small>   </small></p></div> 
-                                          <div class="col-2"><p class="text-left"> <small><small><b id="codes1">Kode</b></small></small></p></div>  
-                                          <div class="col-2"> <p class="text-left"> <small><b id="nouruts1">111 </b></small></p></div> 
-                                          <div class="col-3"><p class="text-left"> <small><b id="tgltrimas1">11/12/2020</b></small></p></div> 
-                                          <div><p>  </p></div>
-                                </div><br>
-                                <div class="midle1 ">
-                                    <p ><small><small><b id="isirings1">RINGKASAN</b></small> </small></p>
-                                </div>
-                                   <br>
-                                  <div class="d-flex col-12 midle2">
-                                      <div class="col-3"> <p class="text-left"> <small><small> <b id="asalsurats1">Asal Surat</b></small> </small></p></div>
-                                      <div class="col-2"><p class="text-left"> <small> <small><b id="tglsurats1">Tanggal</b></small></small></p></div>
-                                      <div class="col-2"> <p class="text-left"> <small> <small><b>  </b></small> </small></p></div>
-                                      <div class="col-5"><P class="text-left"> <small><small><b>  </b></small></small></P></div>
-                                  </div><br>
-                                 <div class="d-flex col-12 bottoms h-50">
-                                  <div class="col-5"><p><small><b></b></small></p></div>
-                                  <div class="col-6"><p><small><b id="keterangans1">Tanggal</b></small></p></div>
-                                 </div>      
-                              </div>
-                              <div class="flex-column col-6 disposisi ">
-                                <br><br><br>
-                                <div class="d-flex col-12"> 
-                                        <div class="col-3"> <p class="text-left"> <small>   </small></p></div> 
-                                        <div class="col-2"><p class="text-left"> <small><small><b id="codes2">Kode</b></small></small></p></div>  
-                                        <div class="col-2"> <p class="text-left"> <small><b id="nouruts1">111 </b></small></p></div> 
-                                        <div class="col-3"><p class="text-left"> <small><b id="tgltrimas2">11/12/2020</b></small></p></div> 
-                                        <div><p>  </p></div>
-                              </div><br>
-                              <div class="midle1 ">
-                                  <p ><small><small><b id="isirings2">RINGKASAN</b></small> </small></p>
-                              </div>
-                                 <br>
-                                <div class="d-flex col-12 midle2">
-                                    <div class="col-3"> <p class="text-left"> <small><small> <b id="asalsurats2">Asal Surat</b></small> </small></p></div>
-                                    <div class="col-2"><p class="text-left"> <small> <small><b id="tglsurats2">Tanggal</b></small></small></p></div>
-                                    <div class="col-2"> <p class="text-left"> <small> <small><b> </b></small> </small></p></div>
-                                    <div class="col-5"><P class="text-left"> <small><small><b> </b></small></small></P></div>
-                                </div><br>
-                               <div class="d-flex col-12  h-50">
-                                <div class="col-5"><p><small><b> </b></small></p></div>
-                                <div class="col-6"><p><small><b id="keterangans2">Tanggal</b></small></p></div>
-                               </div>      
+                        <div class="form-group form-inline justify-content-between col-3 ">
+                                <label for="exampleInputEmail1">Nomor</label>
+                                    <input type="number" class="col-sm-4 col-form-label "   id="mulai1" aria-describedby="emailHelp" placeholder="in" >
+                                    <input type="number" class="col-sm-4 col-form-label"  id="akhir1" aria-describedby="emailHelp" placeholder="out" >
+                                  </div>
+                            <div class="form-group form-inline justify-content-between col-3">
+                                <label for="exampleInputEmail1"><small> Warna Kertas</small> </label>
+                                <input type="button" class="btn-circle btn-warning" value="C" onclick="changeColorToSecondaryDis()">
+                                <input type="button" class="btn-circle btn-outline-warning" value="P" onclick="changeColorToPrimaryDis()" >
                             </div>
-                    </div>
-                    <div class="d-flex ">
-                        <div class="flex-column col-6 disposisi ">
-                            <br><br><br>
-                            <div class="d-flex col-12"> 
-                                    <div class="col-3"> <p class="text-left"> <small>   </small></p></div> 
-                                    <div class="col-2"><p class="text-left"> <small><small><b id="codes3">Kode</b></small></small></p></div>  
-                                    <div class="col-2"> <p class="text-left"> <small><b id="nouruts3">111 </b></small></p></div> 
-                                    <div class="col-3"><p class="text-left"> <small><b id="tgltrimas3">11/12/2020</b></small></p></div> 
-                                    <div><p>  </p></div>
-                          </div><br>
-                          <div class="midle1 ">
-                              <p ><small><small><b id="isirings3">RINGKASAN</b></small> </small></p>
-                          </div>
-                             <br>
-                            <div class="d-flex col-12 midle2">
-                                <div class="col-3"> <p class="text-left"> <small><small> <b id="asalsurats3">Asal Surat</b></small> </small></p></div>
-                                <div class="col-2"><p class="text-left"> <small> <small><b id="tglsurats3">Tanggal</b></small></small></p></div>
-                                <div class="col-2"> <p class="text-left"> <small> <small><b> </b></small> </small></p></div>
-                                <div class="col-5"><P class="text-left"> <small><small><b> </b></small></small></P></div>
-                            </div><br>
-                           <div class="d-flex col-12  h-50">
-                            <div class="col-5"><p><small><b></b></small></p></div>
-                            <div class="col-6"><p><small><b id="keterangans3">Tanggal</b></small></p></div>
-                           </div>      
-                        </div>
-                        <div class="flex-column col-6 disposisi ">
-                            <br><br><br>
-                            <div class="d-flex col-12"> 
-                                    <div class="col-3"> <p class="text-left"> <small>   </small></p></div> 
-                                    <div class="col-2"><p class="text-left"> <small><small><b id="codes4">Kode</b></small></small></p></div>  
-                                    <div class="col-2"> <p class="text-left"> <small><b id="nouruts4">111 </b></small></p></div> 
-                                    <div class="col-3"><p class="text-left"> <small><b id="tgltrimas4">11/12/2020</b></small></p></div> 
-                                    <div><p>  </p></div>
-                          </div><br>
-                          <div class="midle1 ">
-                              <p ><small><small><b id="isirings4">RINGKASAN</b></small> </small></p>
-                          </div>
-                             <br>
-                            <div class="d-flex col-12 midle2">
-                                <div class="col-3"> <p class="text-left"> <small><small> <b id="asalsurats4">Asal Surat</b></small> </small></p></div>
-                                <div class="col-2"><p class="text-left"> <small> <small><b id="tglsurats4">Tanggal</b></small></small></p></div>
-                                <div class="col-2"> <p class="text-left"> <small> <small><b> </b></small> </small></p></div>
-                                <div class="col-5"><P class="text-left"> <small><small><b>  </b></small></small></P></div>
-                            </div><br>
-                           <div class="d-flex col-12  h-50">
-                            <div class="col-5"><p><small><b id=""></b></small></p></div>
-                            <div class="col-6"><p><small><b id="keterangans4">Tanggal</b></small></p></div>
-                           </div>      
-                        </div>
+                            <div class="form-group form-inline justify-content-between col-3 ">
+                                  <input type="text" class="col-sm-6 col-form-label "   id="pnames" aria-describedby="emailHelp" placeholder="nama" >
+                                  <input type="button" class="btn btn-facebook "   id="btnpnames" value="Pengolah" onclick="pengolah()">
+                            </div>
+                            <!-- <input type="button" title="Print All KKSM"  value="Print All KKSM" class="btn btn-success mr-20" onclick="console.log('ok')" id="printAllKksm"> -->
+                                  <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-outline-success mr-20" onclick="" id="showDisposisiData">
+                                  <!-- <input type="button" title="Test System" value="Go here" class="btn btn-circle" onclick="console.log(range(0,100))"> -->
+                                  <input type="button" value="Print KKSM" title="Print Disposisi" class="btn btn-primary" onclick="print()">
+                </form>
             </div>
-           
-    </div>
-    </div>
+        </div>
+        <div class="row" id="printJS-form">
+            <div class="col-6">
+                    <div class="card-body" >
+                            <div class="flex-column  disposisi range " id="content">
+                                    <br><br><br>
+                                    <div class="row col-12"> 
+                                        <div class="col-3"> <p class="text-left"> <small>   </small></p></div> 
+                                        <div class="col-3"><p class="text-center"> <small><small id="codes1"><b >Kode</b></small></small></p></div>  
+                                        <div class="col-3"> <p class="text-center"> <small id="nouruts1"><b >111 </b></small></p></div> 
+                                        <div class="col-3"><p class="text-left"> <small id="tgltrimas"><b > </b></small></p></div> 
+                                        <div><p>  </p></div>
+                                    </div><br>
+                                    <div class="midle1 col-12 ">
+                                        <p ><small><small><b id="isirings1">RINGKASAN</b></small> </small></p>
+                                    </div><br>
+                                    <div class="row col-12 midle2">
+                                        <div class="col-3"> <p class="text-right"> <small><small id="asalsurats1"> <b >Asal Surat</b></small> </small></p></div>
+                                        <div class="col-3"><p class="text-center"> <small> <small id="tglsurats1"><b >Tanggal</b></small></small></p></div>
+                                        <div class="col-2"><p class="text-left"> <small> <small><small><small  id="nomortgls1"><b>  </b></small></small></small> </small></p></div>
+                                        <div class="col-4"><P class="text-left"> <small><small><b>  </b></small></small></P></div>
+                                    </div><br>
+                                    <div class="row col-12 bottoms h-50">
+                                        <div class="col-6 text-center" id="keterangans1"><p><small><b></b></small></p></div>
+                                        <div class="col-6"><p><small ><b ></b></small></p></div>
+                                    </div>      
+                                </div>
+                </div>
+            </div>
+        </div>
       <style>
       .proh3{
         text-align: center;
