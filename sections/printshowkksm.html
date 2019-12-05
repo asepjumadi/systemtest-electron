@@ -1,0 +1,93 @@
+<template class="section-template">
+    <section id="print-now-kksm" class="wrapper style3">
+        <div class="container">
+         
+          <!-- <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printJS({ printable: 'printJS-forms', type: 'html', header: 'PrintJS - Form Element Selection' })"> -->
+
+          <div class="d-flex">
+                
+              <form class="form-inline col-12">
+                      <div class="form-group form-inline justify-content-between col-3 ">
+                              <label for="exampleInputEmail1">Nomor</label>
+                                  <input type="number" class="col-sm-4 col-form-label "   id="mulaikksm" aria-describedby="emailHelp" placeholder="in" >
+                                  <input type="number" class="col-sm-4 col-form-label"  id="akhirkksm" aria-describedby="emailHelp" placeholder="out" >
+                            </div>
+                      <div class="form-group form-inline justify-content-between col-3">
+                              <label for="exampleInputEmail1"><small> Warna Kertas</small> </label>
+                              <input type="button" class="btn-circle btn-danger" value="C" onclick="changeColorToSecondaryKksm()">
+                              <input type="button" class="btn-circle btn-outline-danger" value="P" onclick="changeColorToPrimaryKksm()" >
+                      </div>
+                      <div class="form-group form-inline justify-content-between col-3 ">
+                            <input type="text" class="col-sm-6 col-form-label "   id="pname" aria-describedby="emailHelp" placeholder="nama" >
+                            <input type="button" class="btn btn-facebook "   id="btnpname" value="Pengolah" onclick="pengolah()">
+                      </div>
+                      <!-- <input type="button" title="Print All KKSM"  value="Print All KKSM" class="btn btn-success mr-20" onclick="console.log('ok')" id="printAllKksm"> -->
+                            <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-outline-success mr-20" onclick="" id="KksmRealHasil">
+                            <!-- <input type="button" title="Test System" value="Go here" class="btn btn-circle" onclick="console.log(range(0,100))"> -->
+                            <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printkksm()">
+
+                  </form>
+              
+      </div>
+
+            <div class="card-body" id="printJS-forms">
+               <div class="flex-column justify-content-center" style="margin-top: 4px; " id="idkksms">
+                    <!-- kksm index 1 -->
+                         <div class="col-12 flex-column kksm border-bottom-dark" >
+                           <br><br><br>
+                                    <!-- kksm index 1 row 1 -->
+                                          <div class="d-flex col-12 tops">
+                                              <div class="col-2 "><p>   </p></div>
+                                              <div class="col-3 "><p class="text-left " id="indexk"><small><b>  </b></small> </p></div>
+                                              <div class="col-3 "><p class="text-center " id="codek"><small><small><b>P100/506/90/DT</b></small></small></p></div>
+                                              <div class="col-2 "><p class="text-center " id="nourutk"><small> <b>100</b></small> </p></div>
+                                          </div>
+                                  <!-- kksm index 1 row 2 -->
+                                          <div class="col-12 d-flex mid1th">
+                                              <div class="col-md-3">
+                                                <p>    </p>
+                                              </div>
+                                              <div class="flex-column col-8 ">
+                                                <p class="text-left "><small><b id="isiringk"></b></small></p>
+                                              </div>
+                                          </div>
+                                    <!-- kksm index 1 row 3 -->
+                                              <div class="col-12 d-flex mid2nd">
+                                                  <div class="col-md-2">
+                                                      <p>    </p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                      <small id="asalsuratk"><b>Rektor UPI 1998-2002</b></small>
+                                                    </div>
+                                              </div>
+                                        <!-- kksm index 1 row 4 -->
+                                                <div class="col-12 bottom1th d-flex bottom2nd align-self-center">
+                                                      <div class="col-1"><p>   </p></div>
+                                                      <div class="col-2"> <p ><small> <small id="tglsuratk"><b > </b></small></small></p></div>
+                                                      <div class="col-5"> <p class="text-center" > <small > <small id="nomortglk"><b >   </b></small> </small></p></div>
+                                                      <div class="col-3 text-left" > <p > <small > <b >     </b> </small></p></div>
+                                                </div>
+                                      <!-- kkm index 1 row 5 -->
+                                                <div class="col-12  d-flex  bottom2nd flex-grow-1">
+                                                    <div class="col-1"><p>   </p></div>
+                                                    <div class="col-5"> <p ><small id="keterangank" ><b></b></small></p></div>
+                                                    <div class="col-3"> <p> <small> <b  ></b> </small></p></div>
+                                                    <div class="col-3 text-left font-italic"> <p> <small>     <b></b> </small></p></div>
+                                              </div>
+                                    <!-- kkm index 1 row 6 -->
+                                              <div class="col-12  d-flex  bottoms flex-grow-1">
+                                                  <div class="col-2"><p>   </p></div>
+                                                  <div class="col-7"> <p><small><b>   </b></small></p></div>
+                                                  <div class="col-3"> <p class="text-center"> <small> <b>    </b> </small></p></div>
+                                              </div>
+                            </div>
+                    <!-- kksm index 2 -->
+                </div>
+            </div>
+        </div>
+        <script>
+        
+        </script>
+    </section>
+    </template>
+

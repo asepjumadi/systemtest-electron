@@ -29,7 +29,7 @@ var connection = mysql.createConnection({
     ipcMain.on('updateNowbyNumber',function(event,data){
 
 // execute the UPDATE statement
-            connection.query('UPDATE `undangan` SET code` = ? ,`tanggal_terima` = ? , `nomer_tanggal` = ?,`asal_surat` = ?,`isi_ringkasan` = ?,`keterangan` =? WHERE `undangan`,`no` = ?',[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
+            connection.query('UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?, asal_surat = ?, isi_ringkasan = ?, keterangan  =? WHERE no = ?',[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
             console.log(event.sender.send('updateResponse', result+"data succes been execute"))
             event.sender.send('updateResponse',result+"data succes been execute")
             });
@@ -150,6 +150,41 @@ var connection = mysql.createConnection({
         })
         
     })
+    ipcMain.on('updateAlKksm',function(event,data){
+        // execute the UPDATE statement
+                    connection.query('UPDATE kksm SET kode = ? ,tgl_terima = ? , no_surat = ?, tgl_surat = ?, asal_surat = ?, hari = ?, tgl = ?, jam = ?, tempat  = ?, acara = ?, unit_pelaksana = ? WHERE no = ?',[data.code,data.tgltrima,data.nomorsurat,data.tanggalsurat,data.asalsurat,data.hariacara,data.tanggalacara,data.jamacara,data.tempatacara,data.acara,data.unitpelaksana,data.no], function(error, result, fields){
+                    console.log(event.sender.send('updatekksmsucces', result+"data succes been execute"))
+                    event.sender.send('updatekksmsucces',result+"data succes been execute")
+                    });
+                  
+                    // console.log(connection.query(`UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?,asal_surat = ?,isi_ringkasan = ?,keterangan =? WHERE no = ?`,[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
+        //`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana`,
+                    //     }))
+            })
+    
+            ipcMain.on('showKksmreal',function(event,data){
+                console.log("ok gaes data dari kksm saya terima")
+                console.log(data)
+                
+                connection.query("SELECT * FROM kksm WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
+                    event.sender.send('getOnKksmSucces', result)
+                    console.log('data hasbeen show ')
+                    console.log(result)
+                    console.log('kosong2')
+                })
+            })
+
+            ipcMain.on('showDisposisireal',function(event,data){
+                console.log("ok gaes data dari kksm saya terima")
+                console.log(data)
+                
+                connection.query("SELECT * FROM kksm WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
+                    event.sender.send('getOnDisposisiSucces', result)
+                    console.log('data hasbeen show ')
+                    console.log(result)
+                    console.log('kosong2')
+                })
+            })
  }
 
  

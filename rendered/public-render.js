@@ -154,6 +154,32 @@ function(n) {
       ipcRenderer.send('deleteKksmbynomer',params)
       
     },
+    showrealKksmData:function(){
+      var nomerin = $('#mulaikksm').val()
+      var nomerout =$('#akhirkksm').val()
+      console.log(nomerin)
+      console.log(nomerout)
+      // var b = nomers.split(',').map(function(item) {
+      //   return parseInt(item, 10);
+      // });
+      var params={
+        in:nomerin,
+        out:nomerout
+      }
+      ipcRenderer.send('showKksmreal',params)
+    },
+    showDisposisirealkksm:function(){
+      var nomerin = $('#nomulai1').val()
+      var nomerout= $('#noakhir1').val()
+      console.log(nomerin)
+      console.log(nomerout)
+
+      var params={
+        in:nomerin,
+        out:nomerout
+      }
+      ipcRenderer.send('showDisposisireal',params)
+    },
       init: function() {
         // $('#tambah').click( function () {
         //   ipc.messaging.sendOpenAddEvent()
@@ -206,6 +232,12 @@ function(n) {
         })
         $('#delete-by-numberkksm').click(function(){
           ipc.messaging.deleteKksmByNumber()
+        })
+        $('#showDisposisiOnKKsm').click(function(){
+          ipc.messaging.showDisposisirealkksm()
+        })
+        $('#KksmRealHasil').click(function(){
+          ipc.messaging.showrealKksmData()
         })
       }
     };
@@ -410,6 +442,57 @@ ipcRenderer.on('searchKksmSucess',function(event,response){
     $('#unitpelaksana').val(response[0].unit_pelaksana);
   }
 })
+//
 ipcRenderer.on('getDeletekksmSucess',function(event,response){
   console.log(response)
+})
+ipcRenderer.on('updatekksmsucces',function(event,response){
+  console.log(response)
+})
+
+ipcRenderer.on('getOnKksmSucces',function(event,response){
+  // console.log("this event will be involve")
+  // console.log(response)
+  response.forEach(element=>
+  {
+    console.log(element)
+  
+    var data= $('#idkksms > div').first().clone();
+    $(data).find('#nourutk').text(element.no);
+    $(data).find('#codek').text(element.kode);
+    $(data).find('#isiringk').text(element.hari+" ,"+element.tgl+" ,"+element.jam+" ,"+element.tempat+" ,"+element.acara);
+    $(data).find('#keterangank').text(element.unit_pelaksana);
+    $(data).find('#asalsuratk').text(element.asal_surat);
+    $(data).find('#tgltrimak').text(element.tgl_terima);
+    $(data).find('#nomortglk').text(element.no_surat);
+    $(data).find('#tglsuratk').text(element.tgl_surat);
+
+    $('#idkksms').append(data);
+  });
+    $('#idkksms > div').first().remove();
+
+})
+ipcRenderer.on('getOnDisposisiSucces',function(event,response){
+  console.log(response)
+  var array = [], a = 0;
+
+  var clonerow = response.forEach(element=> {
+    console.log(element.no)
+    var clonerow = $('#printJS-formes > div:first-child').clone()
+      $(clonerow).find('#codex').text(element.kode);
+      $(clonerow).find('#nourutx').text(element.no);
+      $(clonerow).find('#isiringx').text(element.hari+" ,"+element.tgl+" ,"+element.jam+" ,"+element.tempat+" ,"+element.acara);
+      $(clonerow).find('#keteranganx').text(element.unit_pelaksana);
+      $(clonerow).find('#asalsuratx').text(element.asal_surat);
+      $(clonerow).find('#tgltrimax').text(element.tgl_terima);
+      $(clonerow).find('#nomortglx').text(element.no_surat);
+      $(clonerow).find('#tglsuratx').text(element.tgl_surat);
+      // $('#printJS-formes').append(clonerow);
+      $(clonerow).appendTo("#printJS-formes");
+ 
+    // console.log(index+'and'+element.no)
+  });
+  $('#printJS-formes > div:first-child ').remove();
+
+
 })

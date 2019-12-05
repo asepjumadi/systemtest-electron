@@ -31,8 +31,11 @@
 <link rel="import" href="sections/inputnupdate.html">
 <link rel="import" href="sections/printkksm.html">
 <link rel="import" href="sections/inputrealkksm.html">
-
-
+<link rel="import" href="sections/printshowkksm.html">
+<link rel="import" href="sections/readrealkksm.html">
+<link rel="import" href="sections/printskkdispos.html">
+<link rel="import" href="sections/undanganMasukBook.html">
+<link rel="import" href="sections/nonUndanganBook.html">
 <!-- <link rel="import" href="sections/ipcremote.html"> -->
 </head>
 
@@ -100,22 +103,32 @@
         <li class="nav-item">
           <a  class="nav-link" href="#">
             <i class="fas fa-fw fa-table"></i>
+            <span id="print-menu" data-section="nonundangan-book">Buku Non-Undangan </span></a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
             <span id="print-menu" data-section="inputrealkksm">Input KKSM</span></a>
         </li>
         <li class="nav-item">
           <a  class="nav-link" href="#">
             <i class="fas fa-fw fa-table"></i>
-            <span id="print-menu" data-section="print">Lihat KKSM</span></a>
+            <span id="print-menu" data-section="read-kksm-now">Lihat KKSM</span></a>
         </li>
         <li class="nav-item">
           <a  class="nav-link" href="#">
             <i class="fas fa-fw fa-table"></i>
-            <span id="print-menu" data-section="print">Print KKSM</span></a>
+            <span id="print-menu" data-section="print-now-kksm">Print KKSM</span></a>
         </li>
         <li class="nav-item">
           <a  class="nav-link" href="#">
             <i class="fas fa-fw fa-table"></i>
-            <span id="print-menu" data-section="print">Disposisi KKSM</span></a>
+            <span id="print-menu" data-section="printkkdispos">Disposisi KKSM</span></a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span id="print-menu" data-section="undangan-book">Buku Undangan Masuk</span></a>
         </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -176,6 +189,7 @@
   <!-- Page level custom scripts -->
   <script src="./assets/js/demo/datatables-demo.js"></script>
   <script src="./assets/js/database.js"></script>
+  <script src="./assets/js/kksmdatabase.js"></script>
   <script src="assets/js/printallkksm.js"></script>
   <script>window.i18n = new(require('./translations/i18n'));</script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -205,6 +219,7 @@
       </script>
   <!-- <script src="assets/js/logger.js"></script>
 <script>switchConsoleToLogger()</script> -->
+
 </body>
 
 </html>

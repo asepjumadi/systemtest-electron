@@ -1,0 +1,85 @@
+<template class="section-template">
+    <section id="printkkdispos" class="wrapper style3">
+        <div class="row">
+            <div class="col-12">
+                <form class="form-inline col-12">
+                        <div class="form-group form-inline justify-content-between col-3 ">
+                                <label for="exampleInputEmail1">Nomor</label>
+                                    <input type="number" class="col-sm-4 col-form-label "   id="nomulai1" aria-describedby="emailHelp" placeholder="in" >
+                                    <input type="number" class="col-sm-4 col-form-label"  id="noakhir1" aria-describedby="emailHelp" placeholder="out" >
+                                  </div>
+                            <div class="form-group form-inline justify-content-between col-3">
+                                <label for="exampleInputEmail1"><small> Warna Kertas</small></label>
+                                <input type="button" class="btn-circle btn-warning" value="C" onclick="changeColorToSecondaryDis()">
+                                <input type="button" class="btn-circle btn-outline-warning" value="P" onclick="changeColorToPrimaryDis()" >
+                            </div>
+                            <!-- <div class="form-group form-inline justify-content-between col-3 ">
+                                  <input type="text" class="col-sm-6 col-form-label "   id="pnames" aria-describedby="emailHelp" placeholder="nama" >
+                                  <input type="button" class="btn btn-facebook "   id="btnpnames" value="Pengolah" onclick="pengolah()">
+                            </div> -->
+                            <!-- <input type="button" title="Print All KKSM"  value="Print All KKSM" class="btn btn-success mr-20" onclick="console.log('ok')" id="printAllKksm"> -->
+                                  <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-outline-success mr-20" onclick="" id="showDisposisiOnKKsm">
+                                  <!-- <input type="button" title="Test System" value="Go here" class="btn btn-circle" onclick="console.log(range(0,100))"> -->
+                                  <input type="button" value="Print KKSM" title="Print Disposisi" class="btn btn-primary" onclick="print()">
+                </form>
+            </div>
+        </div>
+        <div class="row" id="printJS-formes">
+            <div class="col-6">
+                    <div class="card-body" >
+                            <div class="flex-column  disposisi range " id="content">
+                                    <br><br><br>
+                                    <div class="row col-12"> 
+                                        <div class="col-3"> <p class="text-left"> <small>   </small></p></div> 
+                                        <div class="col-3"><p class="text-center"> <small><small id="codex"><b >Kode</b></small></small></p></div>  
+                                        <div class="col-3"> <p class="text-center"> <small id="nourutx"><b >111 </b></small></p></div> 
+                                        <div class="col-3"><p class="text-left"> <small id="tgltrimax"><b > </b></small></p></div> 
+                                        <div><p>  </p></div>
+                                    </div><br>
+                                    <div class="midle1 col-12 ">
+                                        <p ><small><small><b id="isiringx">RINGKASAN</b></small> </small></p>
+                                    </div><br>
+                                    <div class="row col-12 midle2">
+                                        <div class="col-3"> <p class="text-right"> <small><small id="asalsuratx"> <b >Asal Surat</b></small> </small></p></div>
+                                        <div class="col-3"><p class="text-center"> <small> <small id="tglsuratx"><b >Tanggal</b></small></small></p></div>
+                                        <div class="col-2"><p class="text-left"> <small> <small><small><small  id="nomortglx"><b>  </b></small></small></small> </small></p></div>
+                                        <div class="col-4"><P class="text-left"> <small><small><b>  </b></small></small></P></div>
+                                    </div><br>
+                                    <div class="row col-12 bottoms h-50">
+                                        <div class="col-6 text-center" id="keteranganx"><p><small><b></b></small></p></div>
+                                        <div class="col-6"><p><small ><b ></b></small></p></div>
+                                    </div>      
+                                </div>
+                </div>
+            </div>
+        </div>
+      <style>
+      .proh3{
+        text-align: center;
+
+      }
+      tr.title td {
+	border-left: 0px solid;
+	border-right: 0px solid;
+        }
+    table.report{
+        border-top:1px solid rgb(150, 150, 150);
+        border-bottom: 1px solid rgb(150, 150, 150) ;
+    border-left: 0px solid;
+            border-right: 0px solid;
+    }
+    p.center {
+	padding-top: 5px;
+    text-align: center;
+    }
+    h4.center {
+	padding-top: 5px;
+    text-align: center;
+    }
+    td.paddingL{
+        border-right: 1px solid rgb(97, 89, 89);
+    }
+      </style>
+      
+    </section>
+    </template>

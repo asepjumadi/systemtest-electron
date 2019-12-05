@@ -78,36 +78,36 @@ function readTable(){
                
                 document.getElementById('readTable').innerHTML=html;
                 console.log("hallow")
-                $('.pagination').jqPagination({
-                    maxHeight: 1,
-                    link_string : '/?page={page_number}',
-                    current_page: 1, //Sets the current page, the default is 1
-                    max_page : 40, //Set the maximum page default is 1
-                    page_string : 'Pages {current_page} , {max_page} pages',
-                    paged : function(page) {
-                        // console.log(page)
-                        $('.testok tbody:not(:first)').hide();
-                        let pages = page;
-                        if(pages){
-                            for(i>1;pages;i++)
+                // $('.pagination').jqPagination({
+                //     maxHeight: 1,
+                //     link_string : '/?page={page_number}',
+                //     current_page: 1, //Sets the current page, the default is 1
+                //     max_page : 40, //Set the maximum page default is 1
+                //     page_string : 'Pages {current_page} , {max_page} pages',
+                //     paged : function(page) {
+                //         // console.log(page)
+                //         $('.testok tbody:not(:first)').hide();
+                //         let pages = page;
+                //         if(pages){
+                //             for(i>1;pages;i++)
 
-                                    $("table > tbody > tr").hide().slice(0, 10).show();
-                                    $(".next").on("click", function() {
-                                    $("tbody > tr", $(this).prev()).show();
-                                    })
-                                $(document).ready(function(page){
-                                    $('.testok tbody').hide();
+                //                     $("table > tbody > tr").hide().slice(0, 10).show();
+                //                     $(".next").on("click", function() {
+                //                     $("tbody > tr", $(this).prev()).show();
+                //                     })
+                //                 $(document).ready(function(page){
+                //                     $('.testok tbody').hide();
                                         
-                                    // but show the one we want
-                                    $($('.testok tbody')[page - 1]).show();
+                //                     // but show the one we want
+                //                     $($('.testok tbody')[page - 1]).show();
                                         
-                                })
+                //                 })
                                 
-                        }
+                //         }
 
                         
-                        }
-                    });
+                //         }
+                //     });
                 
                 ipcRenderer.send('haspagination','hallo succes')
                 return html;
@@ -186,3 +186,8 @@ function search() {
         //     "Welcome to " + doc; 
     } 
 } 
+
+
+
+
+
