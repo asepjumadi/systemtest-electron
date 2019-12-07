@@ -1,5 +1,200 @@
 <template class="section-template">
     <section id="undangan-book" class="wrapper style3">
 
+        <div class="container">
+
+            <div class="d-flex">
+                  
+              <form class="form-inline col-12">
+                      <div class="form-group form-inline justify-content-between col-3 ">
+                              <label for="exampleInputEmail1">Nomor</label>
+                                  <input type="number" class="col-sm-4 col-form-label "   id="mulaikksm" aria-describedby="emailHelp" placeholder="in" >
+                                  <input type="number" class="col-sm-4 col-form-label"  id="akhirkksm" aria-describedby="emailHelp" placeholder="out" >
+                            </div>
+                      <div class="form-group form-inline justify-content-between col-3 ">
+                            <input type="text" class="col-sm-6 col-form-label "   id="pname" aria-describedby="emailHelp" placeholder="nama" >
+                            <input type="button" class="btn btn-facebook "   id="btnpname" value="Pengolah" onclick="pengolah()">
+                      </div>
+                      <!-- <input type="button" title="Print All KKSM"  value="Print All KKSM" class="btn btn-success mr-20" onclick="console.log('ok')" id="printAllKksm"> -->
+                            <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-outline-success mr-20" onclick="" id="KksmRealHasil">
+                            <!-- <input type="button" title="Test System" value="Go here" class="btn btn-circle" onclick="console.log(range(0,100))"> -->
+                            <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printkksm()">
+  
+                  </form>
+              
+      </div>
+      <br>
+      <h5 align="center" style="color: black;"><b>BUKU SURAT UNDANGAN MASUK<br>TAHUN . . . . . . . . . . . .</b></h5>
+      
+  
+      <table class="undanganinbook table-hover" id="dataTable" border="1" align="center" style="color: black;">
+        <thead>
+          <tr align="center">
+            <th rowspan="2"> NO URUT</th>
+            <th rowspan="2" width="200px">KODE KLASIFIKASI</th>
+            <th rowspan="2">TANGGAL TERIMA MASUK</th>
+            <th rowspan="2">NOMOR SURAT UNDANGAN TANDA MASUK</th>
+            <th rowspan="2">TANGGAL SURAT UNDANGAN TANDA MASUK</th>
+            <th rowspan="2">ASAL SURAT UNDANGAN TANDA MASUK</th>
+            <th colspan="4">WAKTU DAN TEMPAT PELAKSANAAN</th>
+            <th rowspan="2">ACARA</th>
+            <th rowspan="2">UNIT PELAKSANA</th>
+          </tr>
+          <tr align="center">
+            <th>HARI</th>
+            <th>TANGGAL</th>
+            <th>JAM</th>
+            <th>TEMPAT</th>
+          </tr>
+        </thead>
+        <tbody class="body" id="readTable">
+          <tr align="center">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr align="center">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="tabeltext1" id="keterangan" align="center">
+        <tr>
+          <td>
+          <div class="mid1">
+            <p class="text2">Keterangan:
+a. Kolom 1  : diisi dengan nomor urut sesuai dengan urutan surat undangan 
+                      masuk
+b. Kolom 2  : diisi dengan kode klasifikasi sesuai permasalahan yang terkandung 
+                      dalam surat undangan masuk
+c. Kolom 3  : diisi dengan tanggal pengendalian surat undangan masuk
+d. Kolom 4  : diisi dengan nomor yang tercantum pada surat undangan masuk
+e. Kolom 5  : diisi dengan tanggal yang tercantum pada surat undangan masuk
+f.  Kolom 6  : diisi dengan asal surat undangan masuk                
+          </p>
+        </td>
+        <td class="mid2">
+          <div>
+            <p class="text3">
+g. Kolom 7   : diisi dengan hari pelaksanaan
+h. Kolom 8   : diisi dengan tanggal pelaksanaan
+i.  Kolom 9   : diisi dengan jam pelaksanaan
+j.  Kolom 10 : diisi dengan tempat pelaksanaan
+k. Kolom 11 : diisi dengan acara/kegiatan
+l.  Kolom 12 : diisi dengan unit pengolah yang
+                      menindaklanjuti surat undangan
+                      masuk tersebut</p>
+        </td>
+        </tr>
+        </div>
+      </table>
+      </div>
+
+
     </section>
 </template>

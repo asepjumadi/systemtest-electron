@@ -1,5 +1,118 @@
 <template class="section-template">
     <section id="nonundangan-book" class="wrapper style3">
+         <div class="container">
 
+          <div class="d-flex">
+                
+            <form class="form-inline col-12">
+                    <div class="form-group form-inline justify-content-between col-3 ">
+                            <label for="exampleInputEmail1">Nomor</label>
+                                <input type="number" class="col-sm-4 col-form-label "   id="mulaikksm" aria-describedby="emailHelp" placeholder="in" >
+                                <input type="number" class="col-sm-4 col-form-label"  id="akhirkksm" aria-describedby="emailHelp" placeholder="out" >
+                          </div>
+                    <div class="form-group form-inline justify-content-between col-3 ">
+                          <input type="text" class="col-sm-6 col-form-label "   id="pname" aria-describedby="emailHelp" placeholder="nama" >
+                          <input type="button" class="btn btn-facebook "   id="btnpname" value="Pengolah" onclick="pengolah()">
+                    </div>
+                    <!-- <input type="button" title="Print All KKSM"  value="Print All KKSM" class="btn btn-success mr-20" onclick="console.log('ok')" id="printAllKksm"> -->
+                          <input type="button" title="Tampilkan Hasil"  value="Tampilkan Hasil" class="btn btn-outline-success mr-20" onclick="" id="KksmRealHasil">
+                          <!-- <input type="button" title="Test System" value="Go here" class="btn btn-circle" onclick="console.log(range(0,100))"> -->
+                          <input type="button" value="Print KKSM" title="Print KKSM" class="btn btn-primary" onclick="printkksm()">
+
+                </form>
+            
+    </div>
+    <br>
+    <h5 align="center" style="color: black;"><b>BUKU AGENDA SURAT MASUK<br>TAHUN . . . . . . . . . . . .</b></h5>
+    
+
+    <table class="nonundanganbook table-hover" id="dataTable" border="1" align="center" style="color: black;">
+      <thead>
+        <tr align="center">
+          <th rowspan="2"> NO </th>
+          <th rowspan="2" width="200px">KODE KLASIFIKASI DAN TANGGAL TERIMA SURAT</th>
+          <th colspan="3">SURAT MASUK</th>
+          <th rowspan="2">KETERANGAN</th>
+        </tr>
+        <tr align="center">
+          <th>NOMOR DAN TANGGAL</th>
+          <th>ASAL SURAT</th>
+          <th>ISI RINGKASAN</th>
+        </tr>
+      </thead>
+      <tbody class="body" id="readTable">
+        <tr align="center">
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr align="center">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table class="tabeltext" id="keterangan" align="center">
+      <tr>
+        <td>
+        <div class="mid">
+          <p class="text1">Keterangan:
+a. Kolom 1 : diisi dengan nomor urut sesuai dengan 
+                     urutan surat yang masuk
+b. Kolom 2 : diisi dengan kode klasifikasi sesuai 
+                     permasalahan yang terkandung dalam 
+                     surat masuk dan tanggal pengendalian
+                     surat masuk tersebut
+c. Kolom 3 : diisi dengan nomor dan tanggal yang 
+                     tercantum pada surat masuk                     
+        </p>
+      </td>
+      <td>
+        <div class="mid">
+          <p class="text1">
+d. Kolom 4 : diisi sesuai surat masuk
+e. Kolom 5 : diisi sesuai isi ringkas surat masuk
+f.  Kolom 6 : diisi dengan penjelasan atau catatan
+                     lain apabila diperlukan. misal ditulis
+                     unit pengolah yang menindaklanjuti
+                     surat masuk tersebut</p>
+      </td>
+      </tr>
+      </div>
+    </table>
+    </div>
     </section>
 </template>
+

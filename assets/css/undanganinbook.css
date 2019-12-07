@@ -1,0 +1,41 @@
+.undanganinbook{
+    display:table;
+    width:900px;
+    
+    border-collapse:collapse;
+    border: 1px solid black;
+    margin:0 auto; 
+    line-height:25px;
+}
+.tabeltext1{
+    display:table;
+    width:900px;
+    font-size: 15.75px;
+    border-collapse:collapse;
+    border: 0px solid black;
+    margin:0 auto; 
+    line-height:25px;
+}
+.mid1{
+    width: 450px;
+    color: #000;
+    height: 60mm;
+    width: 10mm;
+}
+.mid2{
+    
+    width: 450px;
+    color: #000;
+    height: 60mm;
+    width: 10mm;
+}
+.text2{
+    letter-spacing: normal;
+    text-align: center;
+    white-space: pre;
+}
+.text3{
+    letter-spacing: normal;
+    text-align: left;
+    white-space: pre;
+}

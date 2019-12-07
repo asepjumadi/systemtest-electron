@@ -1,0 +1,29 @@
+.nonundanganbook{
+    display:table;
+    width:800px;
+    
+    border-collapse:collapse;
+    border: 1px solid black;
+    margin:0 auto; 
+    line-height:25px;
+}
+.tabeltext{
+    display:table;
+    width:800px;
+
+    border-collapse:collapse;
+    border: 0px solid black;
+    margin:0 auto; 
+    line-height:25px;
+}
+.mid{
+    color: #000;
+    height: 60mm;
+    width: 10mm;
+}
+.text1{
+    letter-spacing: normal;
+    text-align: center;
+    white-space: pre;
+
+}
