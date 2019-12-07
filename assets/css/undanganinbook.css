@@ -1,7 +1,7 @@
 .undanganinbook{
     display:table;
     width:900px;
-    
+    font-size: small;
     border-collapse:collapse;
     border: 1px solid black;
     margin:0 auto; 
