@@ -96,7 +96,7 @@ doc.save( 'file.pdf');
 
 function printrealdisposisikksm (quality = 2) {
   // const filename  = 'kksmFileOfPrint.pdf';
-  html2canvas(document.querySelector('#printJS-forms'), 
+  html2canvas(document.querySelector('#printJS-formes'), 
                         {scale: quality}
                 ).then(canvas => {
 var imgWidth = 211; 
