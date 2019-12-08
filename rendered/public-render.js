@@ -180,6 +180,30 @@ function(n) {
       }
       ipcRenderer.send('showDisposisireal',params)
     },
+    showUndanganBook:function(){
+      var nomerin = $('#mulaibook1').val()
+      var nomerout= $('#akhirbook1').val()
+      console.log(nomerin)
+      console.log(nomerout)
+
+      var params={
+        in:nomerin,
+        out:nomerout
+      }
+      ipcRenderer.send('showUndanganBookData',params)
+    },
+    showNonUndBook:function(){
+      var nomerin = $('#mulaiNonUnd').val()
+      var nomerout= $('#akhirNonUnd').val()
+      console.log(nomerin)
+      console.log(nomerout)
+
+      var params={
+        in:nomerin,
+        out:nomerout
+      }
+      ipcRenderer.send('showNonUndBookData',params)
+    },
       init: function() {
         // $('#tambah').click( function () {
         //   ipc.messaging.sendOpenAddEvent()
@@ -238,6 +262,12 @@ function(n) {
         })
         $('#KksmRealHasil').click(function(){
           ipc.messaging.showrealKksmData()
+        })
+        $('#KksmRealHasilBook').click(function(){
+          ipc.messaging.showUndanganBook()
+        })
+        $('#NonUndBook').click(function(){
+          ipc.messaging.showNonUndBook()
         })
       }
     };
@@ -370,7 +400,7 @@ ipcRenderer.on('getkksmSucess',function(event,response){
 
 })
 
-
+//mulaibook1
 ipcRenderer.on('succesInsertKksm',function(event,response){
   console.log('result of kksm')
   console.log(response)
@@ -496,3 +526,54 @@ ipcRenderer.on('getOnDisposisiSucces',function(event,response){
 
 
 })
+ipcRenderer.on('getInvitationBookSucces',function(event,response){
+  console.log(response)
+  var array = [], a = 0;
+
+  var clonerow = response.forEach(element=> {
+    console.log(element.no)
+    var clonerow = $('#readTableUndangan > tr:first-child').clone()
+      $(clonerow).find('#codebook').text(element.kode);
+      $(clonerow).find('#nourutbook').text(element.no);
+      $(clonerow).find('#haribook').text(element.hari);
+      $(clonerow).find('#tglbook').text(element.tgl);
+      $(clonerow).find('#jambook').text(element.jam);
+      $(clonerow).find('#tempatbook').text(element.tempat);
+      $(clonerow).find('#acarabook').text(element.acara);
+      $(clonerow).find('#keteranganbook').text(element.unit_pelaksana);
+      $(clonerow).find('#asalsuratbook').text(element.asal_surat);
+      $(clonerow).find('#tgltrimabook').text(element.tgl_terima);
+      $(clonerow).find('#nomortglbook').text(element.no_surat);
+      $(clonerow).find('#tglsuratbook').text(element.tgl_surat);
+      // $('#printJS-formes').append(clonerow);
+      $(clonerow).appendTo("#readTableUndangan");
+ 
+    // console.log(index+'and'+element.no)
+  });
+  $('#readTableUndangan > tr:first-child ').remove();
+
+
+})
+
+ipcRenderer.on('getNonInvitationSucces',function(event,response){
+  console.log(response)
+  var array = [], a = 0;
+
+  response.forEach(element=> {
+    console.log(element.no)
+    var clonerow = $('#readTableNonUnd > tr:first-child').clone()
+    $(clonerow).find('#kodenTglNonUnd').text(element.code+" ,"+element.tanggal_terima);
+    $(clonerow).find('#noNonUnd').text(element.no);
+    $(clonerow).find('#isiringNonUnd').text(element.isi_ringkasan);
+    $(clonerow).find('#ketNonUnd').text(element.keterangan);
+    $(clonerow).find('#asalNonUnd').text(element.asal_surat);
+    $(clonerow).find('#nonTglNonUnd').text(element.nomer_tanggal);
+      // $('#printJS-formes').append(clonerow);
+      $(clonerow).appendTo("#readTableNonUnd");
+    // console.log(index+'and'+element.no)
+  });
+  $('#readTableNonUnd > tr:first-child ').remove();
+
+
+})
+//getNonInvitationSucces

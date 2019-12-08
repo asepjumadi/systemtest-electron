@@ -118,6 +118,54 @@ while (heightLeft >= 0) {
 doc.save( 'file.pdf');
 
 })}
+function printsuratundanganmasukbook (quality = 2) {
+  // const filename  = 'kksmFileOfPrint.pdf';
+  html2canvas(document.querySelector('#PrintBookUnd'), 
+                        {scale: quality}
+                ).then(canvas => {
+var imgWidth = 298; 
+var pageHeight = 211;  
+var imgHeight = canvas.height * imgWidth / canvas.width;
+var heightLeft = imgHeight;
+var doc = new jsPDF('l', 'mm','a4');
+var position = 0;
+
+doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+heightLeft -= pageHeight;
+
+while (heightLeft >= 0) {
+  position = heightLeft - imgHeight;
+  doc.addPage();
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  heightLeft -= pageHeight;
+}
+doc.save( 'file.pdf');
+
+})}
+function printnonundanganbook (quality = 2) {
+  // const filename  = 'kksmFileOfPrint.pdf';
+  html2canvas(document.querySelector('#PrintNonUndGo'), 
+                        {scale: quality}
+                ).then(canvas => {
+var imgWidth = 298; 
+var pageHeight = 211;  
+var imgHeight = canvas.height * imgWidth / canvas.width;
+var heightLeft = imgHeight;
+var doc = new jsPDF('l', 'mm','a4');
+var position = 0;
+
+doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+heightLeft -= pageHeight;
+
+while (heightLeft >= 0) {
+  position = heightLeft - imgHeight;
+  doc.addPage();
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  heightLeft -= pageHeight;
+}
+doc.save( 'file.pdf');
+
+})}
 
 function printall(quality = 2) {
   const filename  = 'AlldataAfterRender.pdf';
@@ -156,10 +204,4 @@ function range(start, end) {
   console.log(start)
   console.log(end)
   return ans;
-}
-function pengolah(){
-  $('#namapengolah1').html($('#pname').val().toString())
-  $('#namapengolah2').html($('#pname').val().toString())
-  $('#namapengolah3').html($('#pname').val().toString())
-  $('#namapengolah4').html($('#pname').val().toString())
 }

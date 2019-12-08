@@ -185,7 +185,31 @@ var connection = mysql.createConnection({
                     console.log('kosong2')
                 })
             })
+            ipcMain.on('showUndanganBookData',function(event,data){
+                console.log("ok gaes data dari invitation book saya terima")
+                console.log(data)
+                
+                connection.query("SELECT * FROM kksm WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
+                    event.sender.send('getInvitationBookSucces', result)
+                    console.log('data hasbeen show ')
+                    console.log(result)
+                    console.log('kosong2')
+                })
+            })
+            //showNonUndBookData
+            ipcMain.on('showNonUndBookData',function(event,data){
+                console.log("ok gaes data dari invitation book saya terima")
+                console.log(data)
+                
+                connection.query("SELECT * FROM undangan WHERE no BETWEEN "+data.in+" AND "+data.out+"",function(error,result,field){
+                    event.sender.send('getNonInvitationSucces', result)
+                    console.log('data hasbeen show ')
+                    console.log(result)
+                    console.log('kosong2')
+                })
+            })
  }
 
- 
+
+ //showUndanganBookData
 //deleteKksmbynomer
