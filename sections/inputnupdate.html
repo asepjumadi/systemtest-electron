@@ -4,6 +4,7 @@
       <div class="card shadow mb-4">
                 <div class="card-body">
           <H2>Non-Undangan Masuk</H2>
+          <h3 id="noticeid"></h3>
         </div>
       </div>
           <div class="card shadow mb-4">
@@ -11,19 +12,19 @@
       <div class="d-flex  justify-content-between">
           <form id="inputBro" action="/" method="GET">
               <div class="form-group form-inline">
-                <label for="exampleInputEmail1"  >Nomor</label>
+                <label for="exampleInputEmail1" id="nonotice">No.Urut Surat* <p>&nbsp;</p><p id="validationNumber"> </p></label>
                     <input type="number" class="col-xl-12 col-form-label" id="nomer" aria-describedby="emailHelp" >
               </div>
               <div class="form-group form-inline ">
-                <label for="exampleInputPassword1">Code Kalrifikasi</label>
+                <label for="exampleInputPassword1">Kode Klarifikasi Surat</label>
                 <input type="text" class="col-sm-12 col-form-label" id="code" >
           </div>
               <div class="form-group form-inline ">
-                  <label for="exampleInputPassword1">Tanggal Terima</label>
-                  <input type="text" class="col-sm-12 col-form-label" id="tanggaltrima" >
+                  <label for="exampleInputPassword1" id="tglnotice">Tanggal Terima Surat* <p>&nbsp;</p><p id="validationTgl"> </p></label>
+                  <input type="date" class="col-sm-12 col-form-label" id="tanggaltrima" >
               </div>
                 <div class="form-group form-inline ">
-                  <label for="exampleInputPassword1">Nomor & Tanggal</label>
+                  <label for="exampleInputPassword1">Nomor & Tanggal Surat</label>
                   <input type="text" class="col-sm-12 col-form-label" id="nomorTanggal" >
               </div>
                 <div class="form-group form-inline ">
@@ -31,16 +32,16 @@
                   <input type="text" class="col-sm-12 col-form-label" id="asalsurat" >
               </div>
                 <div class="form-group d-flex">
-                  <label for="exampleInputPassword1"  >Isi Ringkasan</label>
+                  <label for="exampleInputPassword1">Isi Ringkasan Surat</label>
                   <!-- <input type="text" class="col-sm-12 col-form-label" id="isiringkasan" > -->
                       <textarea rows="2" cols="50" name="comment" form="inputBro" id="isiringkasan" style="margin-left: 50px;" placeholder="masukkan ringkasan"></textarea>
               </div>
 
               <div class="form-group form-inline ">
-                      <label for="exampleInputPassword1">Keterangan</label>
+                      <label for="exampleInputPassword1">Keterangan Surat</label>
                       <input type="text" class="col-sm-12 col-form-label" id="keterangan" >
                   </div>
-                          <input type="button" class="btn btn-success" onclick="inputDataToDatabase()" title="Simpan" value="Simpan Baru">
+                          <input type="button" class="btn btn-success" onclick="" id="inputUndToDatabase" title="Simpan" value="Simpan Baru">
                           <!-- <button  class="btn btn-primary" >Simpan</button> -->
                           <input type="button" class="btn btn-outline-primary" title="Tambah" value="Tambah" id="tambah">
                           <input type="button" class="btn btn-warning" title="Ubah & Simpan " value="Simpan Perubahan" id="ubah">

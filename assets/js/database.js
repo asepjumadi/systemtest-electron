@@ -1,27 +1,7 @@
 var mysql = require('mysql');
 const {ipcRenderer} = require('electron')
 
-function inputDataToDatabase(){
 
-
-    var params = {
-      nomer:$('#nomer').val(),
-      code:$('#code').val(),
-      tanggaltrima:$('#tanggaltrima').val(),
-      nomorTanggal:$('#nomorTanggal').val(),
-      asalsurat:$('#asalsurat').val(),
-      isiringkasan:$('#isiringkasan').val(),
-      keterangan:$('#keterangan').val(),
-    }
-
-    ipcRenderer.send('testmain', params)
-    
-  }
-  ipcRenderer.on('testclient', function(event, response){
-  
-    console.log(response)
-    
-  })
  
 function searchByNo(){
     var params={
@@ -48,6 +28,18 @@ function readTable(){
                 let html = ' ';
                 // console.log(rows)
                 rows.forEach(function(row){
+                    var tglNikahanRancu = row.tanggal_terima;
+                    var tglketemuKamu = new Date(tglNikahanRancu)
+                    var loveDay = tglketemuKamu.getDate();
+                    var LoveMonth = tglketemuKamu.getMonth();
+                    var LoveYear = tglketemuKamu.getFullYear()
+                    if(loveDay>=10){
+                        var Loversday =loveDay
+                    }else{
+                        var Loversday="0"+loveDay
+                    }
+                    var tglNikahDitetapkan =[Loversday,LoveMonth,LoveYear];
+                    var fixdate= tglNikahDitetapkan.join("-")
                   console.log(row.no)
                     html += '<tr>';
                     html += '<td>';
@@ -57,7 +49,7 @@ function readTable(){
                     html += row.code;
                     html += '</td>';
                     html += '<td>';
-                    html += row.tanggal_terima;
+                    html += fixdate;
                     html += '</td>';
                     html += '<td>';
                     html += row.nomer_tanggal;
