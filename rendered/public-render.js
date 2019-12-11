@@ -532,9 +532,73 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
 ipcRenderer.on("succesInsertKksm", function(event, response) {
   console.log("result of kksm");
   console.log(response);
+  console.log(response);
+  console.log($('#nomer').val())
+  if(response==null){
+    document.getElementById('globalnotice').innerHTML= "&#9824;input data ke database gagal"
+    document.getElementById('globalnotice').style.color="red"
+    if($('#nomerkksm').val()===""){
+      console.log("ok you in red Zone of number");
+      document.getElementById('nomerkksm').style.borderWidth="5px"
+      document.getElementById('nomerkksm').style.borderColor="red"
+      document.getElementById('nourutlabel').style.color="red";
+      document.getElementById('nomernotice').innerHTML= "Tidak Boleh Kosong"
+      // $('#validationNumber').val("Sudah Ada Pada Database");
+    }else{
+      console.log("ok you in green Zone of number");
+      document.getElementById('nomerkksm').style.borderColor="red"
+      document.getElementById('nomerkksm').style.borderWidth="5px"
+      document.getElementById('nnourutlabel').style.color="red"
+      document.getElementById('nomernotice').innerHTML= "Sudah Ada Pada Database"
+      // $('#validationNumber').val("Tidak Boleh Kosong");
+    }
+    
+    if($('#tanggaltrimakksm').val()===""){
+      document.getElementById('tgltrimalabel').style.color="red";
+      document.getElementById('tanggaltrimakksm').style.borderWidth="5px";
+      document.getElementById('tanggaltrimakksm').style.borderColor="red";
+      document.getElementById('tglterimaNotice').innerHTML= "Tidak Boleh Kosong"
+    }else{
+      console.log('you are in safe zone')
+      document.getElementById('tgltrimalabel').style.color="green";
+      document.getElementById('tanggaltrimakksm').style.borderWidth="5px";
+      document.getElementById('tanggaltrimakksm').style.borderColor="green";
+      document.getElementById('tglterimaNotice').innerHTML= " "
+    }
+
+    if($('#tanggaltrimakksm').val()===""){
+      document.getElementById('tglsuratlabel').style.color="red";
+      document.getElementById('tanggalsurat').style.borderWidth="5px";
+      document.getElementById('tanggalsurat').style.borderColor="red";
+      document.getElementById('tglsuratnotice').innerHTML= "Tidak Boleh Kosong"
+    }else{
+      console.log('you are in safe zone')
+      document.getElementById('tglsuratlabel').style.color="green";
+      document.getElementById('tanggalsurat').style.borderWidth="5px";
+      document.getElementById('tanggalsurat').style.borderColor="green";
+      document.getElementById('tglsuratnotice').innerHTML= " "
+    }
+
+    
+   
+console.log('this red zone')
+  }else{
+    console.log('your good boy or girl')
+    document.getElementById('nomer').style.borderColor="#ddd"
+      document.getElementById('nomer').style.borderWidth="0.5px"
+      document.getElementById('nonotice').style.color="grey"
+      document.getElementById('validationNumber').innerHTML= " "
+      document.getElementById('noticeid').innerHTML= "&#9829;input data ke database berhasil"
+      document.getElementById('noticeid').style.color="green"
+
+      document.getElementById('tglnotice').style.color="grey";
+      document.getElementById('tanggaltrima').style.borderWidth="0.5px";
+      document.getElementById('tanggaltrima').style.borderColor="#ddd";
+      document.getElementById('validationTgl').innerHTML= " "
+  }
   
 });
-//searchKksmSucess
+//responsekksm
 ipcRenderer.on("searchKksmSucess", function(event, response) {
   console.log(response);
   console.log("one -kksm in");

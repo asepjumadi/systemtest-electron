@@ -1,7 +1,7 @@
 <template class="section-template">
   <section id="inputrealkksm" class="wrapper style3">
       <div class="container" >
-          <H2>Input Undangan Masuk</H2>
+          <H2>Input Undangan Masuk ^ <p id="globalnotice"></p></H2>
           <div class="card shadow mb-4">
                 <div class="card-body">
            
@@ -30,15 +30,15 @@
             <div class="card-body">
                 <div class="row  justify-content-between">
                         <div class="form-group col-xl-6">
-                                <label for="exampleInputEmail1"  >Nomer urut Surat</label>
+                                <label for="exampleInputEmail1" id="nourutlabel"  >Nomer urut Surat* <p id="nomernotice"></p> </label>
                                     <input type="number" class="col-xl-12 col-form-label" id="nomerkksm" aria-describedby="emailHelp" >
                                 <label for="exampleInputPassword1">Kode Kalrifikasi Surat</label>
                                     <input type="text" class="col-sm-12 col-form-label" id="codekksm" >
-                                <label for="exampleInputPassword1">Tanggal Terima Surat</label>
+                                <label for="exampleInputPassword1" id="tgltrimalabel">Tanggal Terima Surat <p id="tglterimaNotice"> </p> </label>
                                     <input type="date" class="col-sm-12 col-form-label" date  id="tanggaltrimakksm" >
                                 <label for="exampleInputPassword1">Nomor Surat Undangan </label>
                                     <input type="text" class="col-sm-12 col-form-label" id="nomorsurat" >
-                                <label for="exampleInputPassword1">Tanggal Surat</label>
+                                <label for="exampleInputPassword1" id="tglsuratlabel">Tanggal Surat* <p id="tglsuratnotice"></p></label>
                                     <input type="date" class="col-sm-12 col-form-label"  id="tanggalsurat" >
                                 <label for="exampleInputPassword1">Asal Surat</label>
                                     <input type="text" class="col-sm-12 col-form-label" id="asalsuratkksm" >
@@ -46,9 +46,9 @@
                         <div class="form-group col-xl-6">
                                 <label for="exampleInputPassword1">Hari</label>
                                     <input type="text" class="col-sm-12 col-form-label" id="hariacara" >
-                                <label for="exampleInputPassword1">Tangal</label>
+                                <label for="exampleInputPassword1" id="tglacaraLabel">Tangal* <p id="tglacaranotice"></p></label>
                                     <input type="date" class="col-sm-12 col-form-label"   id="tanggalacara" >
-                                <label for="exampleInputPassword1">Jam</label>
+                                <label for="exampleInputPassword1" id="jamlabel">Jam <p id="jamnotice"></p></label>
                                     <input type="time" class="col-sm-12 col-form-label" id="jamacara" >
                                 <label for="exampleInputPassword1">Tempat</label>
                                     <input type="text" class="col-sm-12 col-form-label" id="tempatacara" >
