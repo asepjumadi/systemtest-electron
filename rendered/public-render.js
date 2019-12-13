@@ -530,10 +530,10 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
 
 //mulaibook1
 ipcRenderer.on("succesInsertKksm", function(event, response) {
-  console.log("result of kksm");
+  // console.log("result of kksm");
+  // console.log(response);
   console.log(response);
-  console.log(response);
-  console.log($('#nomer').val())
+  console.log($('#nomerkksm').val())
   if(response==null){
     document.getElementById('globalnotice').innerHTML= "&#9824;input data ke database gagal"
     document.getElementById('globalnotice').style.color="red"
@@ -566,7 +566,7 @@ ipcRenderer.on("succesInsertKksm", function(event, response) {
       document.getElementById('tglterimaNotice').innerHTML= " "
     }
 
-    if($('#tanggaltrimakksm').val()===""){
+    if($('#tanggalsurat').val()===""){
       document.getElementById('tglsuratlabel').style.color="red";
       document.getElementById('tanggalsurat').style.borderWidth="5px";
       document.getElementById('tanggalsurat').style.borderColor="red";
@@ -578,23 +578,62 @@ ipcRenderer.on("succesInsertKksm", function(event, response) {
       document.getElementById('tanggalsurat').style.borderColor="green";
       document.getElementById('tglsuratnotice').innerHTML= " "
     }
-
-    
    
+    if($('#tanggalacara').val()===""){
+      document.getElementById('tglacaraLabel').style.color="red";
+      document.getElementById('tanggalacara').style.borderWidth="5px";
+      document.getElementById('tanggalacara').style.borderColor="red";
+      document.getElementById('tglacaranotice').innerHTML= "Tidak Boleh Kosong"
+    }else{
+      console.log('you are in safe zone')
+      document.getElementById('tglacaraLabel').style.color="green";
+      document.getElementById('tanggalacara').style.borderWidth="5px";
+      document.getElementById('tanggalacara').style.borderColor="green";
+      document.getElementById('tglacaranotice').innerHTML= " "
+    }
+
+    if($('#jamacara').val()===""){
+      document.getElementById('jamlabel').style.color="red";
+      document.getElementById('jamacara').style.borderWidth="5px";
+      document.getElementById('jamacara').style.borderColor="red";
+      document.getElementById('jamnotice').innerHTML= "Tidak Boleh Kosong"
+    }else{
+      console.log('you are in safe zone')
+      document.getElementById('jamlabel').style.color="green";
+      document.getElementById('jamacara').style.borderWidth="5px";
+      document.getElementById('jamacara').style.borderColor="green";
+      document.getElementById('jamnotice').innerHTML= " "
+    }
+
+
+
 console.log('this red zone')
   }else{
     console.log('your good boy or girl')
-    document.getElementById('nomer').style.borderColor="#ddd"
-      document.getElementById('nomer').style.borderWidth="0.5px"
-      document.getElementById('nonotice').style.color="grey"
-      document.getElementById('validationNumber').innerHTML= " "
-      document.getElementById('noticeid').innerHTML= "&#9829;input data ke database berhasil"
-      document.getElementById('noticeid').style.color="green"
+    // document.getElementById('nomer').style.borderColor="#ddd"
+    //   document.getElementById('nomer').style.borderWidth="0.5px"
+    //   document.getElementById('nonotice').style.color="grey"
+    //   document.getElementById('validationNumber').innerHTML= " "
+    //   document.getElementById('noticeid').innerHTML= "&#9829;input data ke database berhasil"
+    //   document.getElementById('noticeid').style.color="green"
 
-      document.getElementById('tglnotice').style.color="grey";
-      document.getElementById('tanggaltrima').style.borderWidth="0.5px";
-      document.getElementById('tanggaltrima').style.borderColor="#ddd";
-      document.getElementById('validationTgl').innerHTML= " "
+    //   document.getElementById('tglnotice').style.color="grey";
+    //   document.getElementById('tanggaltrima').style.borderWidth="0.5px";
+    //   document.getElementById('tanggaltrima').style.borderColor="#ddd";
+    //   document.getElementById('validationTgl').innerHTML= " "
+
+
+    document.getElementById('nomerkksm').style.borderColor="#ddd"
+      document.getElementById('nomerkksm').style.borderWidth="0.5px"
+      document.getElementById('nourutlabel').style.color="grey"
+      document.getElementById('nomernotice').innerHTML= " "
+      document.getElementById('globalnotice').innerHTML= "&#9829;input data ke database berhasil"
+      document.getElementById('globalnotice').style.color="green"
+
+      document.getElementById('tgltrimalabel').style.color="grey";
+      document.getElementById('tanggaltrimakksm').style.borderWidth="0.5px";
+      document.getElementById('tanggaltrimakksm').style.borderColor="#ddd";
+      document.getElementById('tglterimaNotice').innerHTML= " "
   }
   
 });
@@ -944,8 +983,6 @@ ipcRenderer.on("testclient", function(event, response) {
       document.getElementById('tanggaltrima').style.borderColor="green";
       document.getElementById('validationTgl').innerHTML= " "
     }
-
-    
    
 console.log('this red zone')
   }else{
