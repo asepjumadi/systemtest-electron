@@ -18,8 +18,13 @@ const { BrowserWindow } = require("electron");
         // var dirtsyTglTrima = $("#tanggaltrimakksm").val();
         // var date2 = new Date(dirtsyTglTrima);
         // var cleanTglTrima = date2.toLocaleDateString("id-ID");
+        if ($("#nomer").val() === "0") {
+          var nomer = null;
+        } else {
+          var nomer = $("#nomer").val();
+        }
         var params = {
-          nomer: $("#nomer").val(),
+          nomer: nomer,
           code: $("#code").val(),
           tanggaltrima: $("#tanggaltrima").val(),
           nomorTanggal: $("#nomorTanggal").val(),
@@ -53,8 +58,13 @@ const { BrowserWindow } = require("electron");
         // var year2 = datafirst[2];
         // var fulldateconvert = [day2, month2, year2];
         // var cleandate = fulldateconvert.join("-");
+        if ($("#nomer_id").val() === "0") {
+          var nomerid = null;
+        } else {
+          var nomerid = $("#nomer_id").val();
+        }
         var params = {
-          nomer: $("#nomer_id").val(),
+          nomer: nomerid,
           code: $("#code").val(),
           tanggaltrima: $("#tanggaltrima").val(),
           nomorTanggal: $("#nomorTanggal").val(),
@@ -110,8 +120,14 @@ const { BrowserWindow } = require("electron");
         var datenew2 = new Date(dirtytglacara);
         var cleanTglAcara = datenew2.toLocaleDateString("id-ID");
         // console.log(cleanTglTrima)
+        console.log(typeof $("#nomerkksm").val());
+        if ($("#nomerkksm").val() === "0") {
+          var no = "salah";
+        } else {
+          var no = $("#nomerkksm").val();
+        }
         var params = {
-          no: $("#nomerkksm").val(),
+          no: no,
           code: $("#codekksm").val(),
           tgltrima: cleanTglTrima,
           nomorsurat: $("#nomorsurat").val(),
@@ -305,14 +321,16 @@ ipcRenderer.on("feedback-add", function(event, response) {
 ipcRenderer.on("getAllDataSucess", function(event, response) {
   console.log(response);
   console.log("all-one");
-  var params={
-    saverNomer:$('#nomer_id').val(),
-  }
+  var params = {
+    saverNomer: $("#nomer_id").val()
+  };
   if (response[0] === undefined) {
-   
     console.log("undefined only");
-    document.getElementById('noticeid').innerHTML= "&#9824; data dengan nomer Urut ke-"+params.saverNomer+" Tidak Berhasil Ditemukan"
-    document.getElementById('noticeid').style.color="red"
+    document.getElementById("noticeid").innerHTML =
+      "&#9824; data dengan nomer Urut ke-" +
+      params.saverNomer +
+      " Tidak Berhasil Ditemukan";
+    document.getElementById("noticeid").style.color = "red";
     $("#nomer").val(0),
       $("#code").val("Kode surat tidak ditemukan"),
       $("#tanggaltrima").val("tanggal terima surat tidak ditemukan"),
@@ -321,42 +339,45 @@ ipcRenderer.on("getAllDataSucess", function(event, response) {
       $("#isiringkasan").val("isi ringkasan tidak ditemukan"),
       $("#keterangan").val("keterangan tidak ditemukan");
   } else {
-  // console.log(response[0]);
-  document.getElementById('noticeid').innerHTML= "&#9829; data dengan nomer Urut ke-"+params.saverNomer+" Berhasil Ditemukan"
-    document.getElementById('noticeid').style.color="green"
-  console.log(response[0].tanggal_terima)
-  var tglNikahanRancu = response[0].tanggal_terima;
-  var tglketemuKamu = new Date(tglNikahanRancu)
-  var loveDay = tglketemuKamu.getDate();
-  var LoveMonth = tglketemuKamu.getMonth();
-  var LoveYear = tglketemuKamu.getFullYear()
-  if(loveDay<10){
-    var Loversday="0"+loveDay
-  }else{
-    var Loversday =loveDay
+    // console.log(response[0]);
+    document.getElementById("noticeid").innerHTML =
+      "&#9829; data dengan nomer Urut ke-" +
+      params.saverNomer +
+      " Berhasil Ditemukan";
+    document.getElementById("noticeid").style.color = "green";
+    console.log(response[0].tanggal_terima);
+    var tglNikahanRancu = response[0].tanggal_terima;
+    var tglketemuKamu = new Date(tglNikahanRancu);
+    var loveDay = tglketemuKamu.getDate();
+    var LoveMonth = tglketemuKamu.getMonth();
+    var LoveYear = tglketemuKamu.getFullYear();
+    if (loveDay < 10) {
+      var Loversday = "0" + loveDay;
+    } else {
+      var Loversday = loveDay;
+    }
+    if (LoveMonth < 10) {
+      var LoversMonth = "0" + LoveMonth;
+    } else {
+      var LoversMonth = LoveMonth;
+    }
+    var tglNikahDitetapkan = [LoveYear, LoversMonth, Loversday];
+    var fixdate = tglNikahDitetapkan.join("-");
+    console.log(fixdate);
+    console.log("why you are still NaN?");
+    $("#nomer").val(response[0].no),
+      $("#code").val(response[0].code),
+      $("#tanggaltrima").val(fixdate),
+      $("#nomorTanggal").val(response[0].nomer_tanggal),
+      $("#asalsurat").val(response[0].asal_surat),
+      $("#isiringkasan").val(response[0].isi_ringkasan),
+      $("#keterangan").val(response[0].keterangan);
   }
-  if(LoveMonth<10){
-    var LoversMonth="0"+LoveMonth
-  }else{
-    var LoversMonth= LoveMonth
-  }
-  var tglNikahDitetapkan =[LoveYear,LoversMonth,Loversday];
-  var fixdate= tglNikahDitetapkan.join("-")
-  console.log(fixdate)
-  console.log("why you are still NaN?")
-  $("#nomer").val(response[0].no),
-    $("#code").val(response[0].code),
-    $("#tanggaltrima").val(fixdate),
-    $("#nomorTanggal").val(response[0].nomer_tanggal),
-    $("#asalsurat").val(response[0].asal_surat),
-    $("#isiringkasan").val(response[0].isi_ringkasan),
-    $("#keterangan").val(response[0].keterangan);
-}
 });
 ipcRenderer.on("updateResponse", function(event, response) {
-  console.log("Start To Update ..........")
+  console.log("Start To Update ..........");
   console.log(response);
-  console.log("update clear now")
+  console.log("update clear now");
 });
 ipcRenderer.on("getDeleteSucess", function(event, response) {
   console.log(response);
@@ -377,18 +398,18 @@ ipcRenderer.on("getDisposisiSucces", function(event, response) {
     var Sindex = 2 * index;
     var no = element.no;
     var tglNikahanRancu = element.tanggal_terima;
-    var tglketemuKamu = new Date(tglNikahanRancu)
+    var tglketemuKamu = new Date(tglNikahanRancu);
     var loveDay = tglketemuKamu.getDate();
     var LoveMonth = tglketemuKamu.getMonth();
-    var LoveYear = tglketemuKamu.getFullYear()
-    if(loveDay<10){
-      var Loversday="0"+loveDay
-    }else{
-      var Loversday =loveDay
+    var LoveYear = tglketemuKamu.getFullYear();
+    if (loveDay < 10) {
+      var Loversday = "0" + loveDay;
+    } else {
+      var Loversday = loveDay;
     }
-    var tglNikahDitetapkan =[Loversday,LoveMonth,LoveYear];
-    var fixdate= tglNikahDitetapkan.join("-")
-    array = [], c = 0;
+    var tglNikahDitetapkan = [Loversday, LoveMonth, LoveYear];
+    var fixdate = tglNikahDitetapkan.join("-");
+    (array = []), (c = 0);
     element.nomer_tanggal
       .split(/([()])/)
       .filter(Boolean)
@@ -459,13 +480,13 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
   response.forEach(element => {
     (array = []), (c = 0);
     var tglNikahanRancu = element.tanggal_terima;
-    var tglketemuKamu = new Date(tglNikahanRancu)
+    var tglketemuKamu = new Date(tglNikahanRancu);
     var loveDay = tglketemuKamu.getDate();
     var LoveMonth = tglketemuKamu.getMonth();
-    var LoveYear = tglketemuKamu.getFullYear()
-    
-    var tglNikahDitetapkan =[loveDay,LoveMonth,LoveYear];
-    var fixdate= tglNikahDitetapkan.join("-")
+    var LoveYear = tglketemuKamu.getFullYear();
+
+    var tglNikahDitetapkan = [loveDay, LoveMonth, LoveYear];
+    var fixdate = tglNikahDitetapkan.join("-");
     element.nomer_tanggal
       .split(/([()])/)
       .filter(Boolean)
@@ -533,116 +554,127 @@ ipcRenderer.on("succesInsertKksm", function(event, response) {
   // console.log("result of kksm");
   // console.log(response);
   console.log(response);
-  console.log($('#nomerkksm').val())
-  if(response==null){
-    document.getElementById('globalnotice').innerHTML= "&#9824;input data ke database gagal"
-    document.getElementById('globalnotice').style.color="red"
-    if($('#nomerkksm').val()===""){
+  console.log($("#nomerkksm").val());
+  if (response == null) {
+    document.getElementById("globalnotice").innerHTML =
+      "&#9824;input data ke database gagal";
+    document.getElementById("globalnotice").style.color = "red";
+    if ($("#nomerkksm").val() === "") {
       console.log("ok you in red Zone of number");
-      document.getElementById('nomerkksm').style.borderWidth="5px"
-      document.getElementById('nomerkksm').style.borderColor="red"
-      document.getElementById('nourutlabel').style.color="red";
-      document.getElementById('nomernotice').innerHTML= "Tidak Boleh Kosong"
+      document.getElementById("nomerkksm").style.borderWidth = "5px";
+      document.getElementById("nomerkksm").style.borderColor = "red";
+      document.getElementById("nourutlabel").style.color = "red";
+      document.getElementById("nomernotice").innerHTML = "Tidak Boleh Kosong";
       // $('#validationNumber').val("Sudah Ada Pada Database");
-    }else{
+    } else if ($("#nomerkksm").val() === "0") {
+      document.getElementById("nomerkksm").style.borderWidth = "5px";
+      document.getElementById("nomerkksm").style.borderColor = "red";
+      document.getElementById("nourutlabel").style.color = "red";
+      document.getElementById("nomernotice").innerHTML =
+        "nomer 0 tidak diizinkan";
+    } else {
       console.log("ok you in green Zone of number");
-      document.getElementById('nomerkksm').style.borderColor="red"
-      document.getElementById('nomerkksm').style.borderWidth="5px"
-      document.getElementById('nnourutlabel').style.color="red"
-      document.getElementById('nomernotice').innerHTML= "Sudah Ada Pada Database"
+      document.getElementById("nomerkksm").style.borderColor = "red";
+      document.getElementById("nomerkksm").style.borderWidth = "5px";
+      document.getElementById("nourutlabel").style.color = "red";
+      document.getElementById("nomernotice").innerHTML =
+        "Sudah Ada Pada Database";
       // $('#validationNumber').val("Tidak Boleh Kosong");
     }
-    
-    if($('#tanggaltrimakksm').val()===""){
-      document.getElementById('tgltrimalabel').style.color="red";
-      document.getElementById('tanggaltrimakksm').style.borderWidth="5px";
-      document.getElementById('tanggaltrimakksm').style.borderColor="red";
-      document.getElementById('tglterimaNotice').innerHTML= "Tidak Boleh Kosong"
-    }else{
-      console.log('you are in safe zone')
-      document.getElementById('tgltrimalabel').style.color="green";
-      document.getElementById('tanggaltrimakksm').style.borderWidth="5px";
-      document.getElementById('tanggaltrimakksm').style.borderColor="green";
-      document.getElementById('tglterimaNotice').innerHTML= " "
+
+    if ($("#tanggaltrimakksm").val() === "") {
+      document.getElementById("tgltrimalabel").style.color = "red";
+      document.getElementById("tanggaltrimakksm").style.borderWidth = "5px";
+      document.getElementById("tanggaltrimakksm").style.borderColor = "red";
+      document.getElementById("tglterimaNotice").innerHTML =
+        "Tidak Boleh Kosong";
+    } else {
+      console.log("you are in safe zone");
+      document.getElementById("tgltrimalabel").style.color = "green";
+      document.getElementById("tanggaltrimakksm").style.borderWidth = "5px";
+      document.getElementById("tanggaltrimakksm").style.borderColor = "green";
+      document.getElementById("tglterimaNotice").innerHTML = " ";
     }
 
-    if($('#tanggalsurat').val()===""){
-      document.getElementById('tglsuratlabel').style.color="red";
-      document.getElementById('tanggalsurat').style.borderWidth="5px";
-      document.getElementById('tanggalsurat').style.borderColor="red";
-      document.getElementById('tglsuratnotice').innerHTML= "Tidak Boleh Kosong"
-    }else{
-      console.log('you are in safe zone')
-      document.getElementById('tglsuratlabel').style.color="green";
-      document.getElementById('tanggalsurat').style.borderWidth="5px";
-      document.getElementById('tanggalsurat').style.borderColor="green";
-      document.getElementById('tglsuratnotice').innerHTML= " "
-    }
-   
-    if($('#tanggalacara').val()===""){
-      document.getElementById('tglacaraLabel').style.color="red";
-      document.getElementById('tanggalacara').style.borderWidth="5px";
-      document.getElementById('tanggalacara').style.borderColor="red";
-      document.getElementById('tglacaranotice').innerHTML= "Tidak Boleh Kosong"
-    }else{
-      console.log('you are in safe zone')
-      document.getElementById('tglacaraLabel').style.color="green";
-      document.getElementById('tanggalacara').style.borderWidth="5px";
-      document.getElementById('tanggalacara').style.borderColor="green";
-      document.getElementById('tglacaranotice').innerHTML= " "
+    if ($("#tanggalsurat").val() === "") {
+      document.getElementById("tglsuratlabel").style.color = "red";
+      document.getElementById("tanggalsurat").style.borderWidth = "5px";
+      document.getElementById("tanggalsurat").style.borderColor = "red";
+      document.getElementById("tglsuratnotice").innerHTML =
+        "Tidak Boleh Kosong";
+    } else {
+      console.log("you are in safe zone");
+      document.getElementById("tglsuratlabel").style.color = "green";
+      document.getElementById("tanggalsurat").style.borderWidth = "5px";
+      document.getElementById("tanggalsurat").style.borderColor = "green";
+      document.getElementById("tglsuratnotice").innerHTML = " ";
     }
 
-    if($('#jamacara').val()===""){
-      document.getElementById('jamlabel').style.color="red";
-      document.getElementById('jamacara').style.borderWidth="5px";
-      document.getElementById('jamacara').style.borderColor="red";
-      document.getElementById('jamnotice').innerHTML= "Tidak Boleh Kosong"
-    }else{
-      console.log('you are in safe zone')
-      document.getElementById('jamlabel').style.color="green";
-      document.getElementById('jamacara').style.borderWidth="5px";
-      document.getElementById('jamacara').style.borderColor="green";
-      document.getElementById('jamnotice').innerHTML= " "
+    if ($("#tanggalacara").val() === "") {
+      document.getElementById("tglacaraLabel").style.color = "red";
+      document.getElementById("tanggalacara").style.borderWidth = "5px";
+      document.getElementById("tanggalacara").style.borderColor = "red";
+      document.getElementById("tglacaranotice").innerHTML =
+        "Tidak Boleh Kosong";
+    } else {
+      console.log("you are in safe zone");
+      document.getElementById("tglacaraLabel").style.color = "green";
+      document.getElementById("tanggalacara").style.borderWidth = "5px";
+      document.getElementById("tanggalacara").style.borderColor = "green";
+      document.getElementById("tglacaranotice").innerHTML = " ";
     }
 
+    if ($("#jamacara").val() === "") {
+      document.getElementById("jamlabel").style.color = "red";
+      document.getElementById("jamacara").style.borderWidth = "5px";
+      document.getElementById("jamacara").style.borderColor = "red";
+      document.getElementById("jamnotice").innerHTML = "Tidak Boleh Kosong";
+    } else {
+      console.log("you are in safe zone");
+      document.getElementById("jamlabel").style.color = "green";
+      document.getElementById("jamacara").style.borderWidth = "5px";
+      document.getElementById("jamacara").style.borderColor = "green";
+      document.getElementById("jamnotice").innerHTML = " ";
+    }
 
+    console.log("this red zone");
+  } else {
+    console.log("your good boy or girl");
+    document.getElementById("nomerkksm").style.borderColor = "#ddd";
+    document.getElementById("nomerkksm").style.borderWidth = "0.5px";
+    document.getElementById("nourutlabel").style.color = "grey";
+    document.getElementById("nomernotice").innerHTML = " ";
+    document.getElementById("globalnotice").innerHTML =
+      "&#9829;input data ke database berhasil";
+    document.getElementById("globalnotice").style.color = "green";
 
-console.log('this red zone')
-  }else{
-    console.log('your good boy or girl')
-    // document.getElementById('nomer').style.borderColor="#ddd"
-    //   document.getElementById('nomer').style.borderWidth="0.5px"
-    //   document.getElementById('nonotice').style.color="grey"
-    //   document.getElementById('validationNumber').innerHTML= " "
-    //   document.getElementById('noticeid').innerHTML= "&#9829;input data ke database berhasil"
-    //   document.getElementById('noticeid').style.color="green"
+    document.getElementById("tgltrimalabel").style.color = "grey";
+    document.getElementById("tanggaltrimakksm").style.borderWidth = "0.5px";
+    document.getElementById("tanggaltrimakksm").style.borderColor = "#ddd";
+    document.getElementById("tglterimaNotice").innerHTML = " ";
 
-    //   document.getElementById('tglnotice').style.color="grey";
-    //   document.getElementById('tanggaltrima').style.borderWidth="0.5px";
-    //   document.getElementById('tanggaltrima').style.borderColor="#ddd";
-    //   document.getElementById('validationTgl').innerHTML= " "
+    document.getElementById("jamlabel").style.color = "grey";
+    document.getElementById("jamacara").style.borderWidth = "0.5px";
+    document.getElementById("jamacara").style.borderColor = "#ddd";
+    document.getElementById("jamnotice").innerHTML = " ";
 
+    document.getElementById("tglacaraLabel").style.color = "grey";
+    document.getElementById("tanggalacara").style.borderWidth = "0.5px";
+    document.getElementById("tanggalacara").style.borderColor = "#ddd";
+    document.getElementById("tglacaranotice").innerHTML = " ";
 
-    document.getElementById('nomerkksm').style.borderColor="#ddd"
-      document.getElementById('nomerkksm').style.borderWidth="0.5px"
-      document.getElementById('nourutlabel').style.color="grey"
-      document.getElementById('nomernotice').innerHTML= " "
-      document.getElementById('globalnotice').innerHTML= "&#9829;input data ke database berhasil"
-      document.getElementById('globalnotice').style.color="green"
-
-      document.getElementById('tgltrimalabel').style.color="grey";
-      document.getElementById('tanggaltrimakksm').style.borderWidth="0.5px";
-      document.getElementById('tanggaltrimakksm').style.borderColor="#ddd";
-      document.getElementById('tglterimaNotice').innerHTML= " "
+    document.getElementById("tglsuratlabel").style.color = "grey";
+    document.getElementById("tanggalsurat").style.borderWidth = "0.5px";
+    document.getElementById("tanggalsurat").style.borderColor = "#ddd";
+    document.getElementById("tglsuratnotice").innerHTML = " ";
   }
-  
 });
 //responsekksm
 ipcRenderer.on("searchKksmSucess", function(event, response) {
   console.log(response);
   console.log("one -kksm in");
   if (response[0] == undefined) {
-    var saverNomer=$('#nomer_id').val();
+    var saverNomer = $("#nomer_id").val();
     console.log("undefined only");
 
     var dy = ["1111"];
@@ -664,58 +696,56 @@ ipcRenderer.on("searchKksmSucess", function(event, response) {
     $("#unitpelaksana").val("Unit pelaksana tidak ditemukan");
   } else if (response[0] != undefined) {
     console.log(response[0]);
-    
+
     var TglTrima = response[0].tgl_terima;
     var datafirst = TglTrima.split("/");
     var day2 = datafirst[0];
-    if(day2<10){
-      var dayfixTglTrima="0"+day2
-    }else{
-      var dayfixTglTrima=day2
+    if (day2 < 10) {
+      var dayfixTglTrima = "0" + day2;
+    } else {
+      var dayfixTglTrima = day2;
     }
     var month2 = datafirst[1];
-    if(month2<10){
-      var monthTglTrima = "0"+month2
-    }else{
-      var monthTglTrima = month2
+    if (month2 < 10) {
+      var monthTglTrima = "0" + month2;
+    } else {
+      var monthTglTrima = month2;
     }
     var year2 = datafirst[2];
     var fulldate2 = [year2, monthTglTrima, dayfixTglTrima];
     var fullTglTrima = fulldate2.join("-");
 
-
     var defaulttglsurat = response[0].tgl_surat;
     var datasecond = defaulttglsurat.split("/");
     var day1 = datasecond[0];
-    if(day1<10){
-      var dayfixTglSurat="0"+day1
-    }else{
-      var dayfixTglSurat=day1
+    if (day1 < 10) {
+      var dayfixTglSurat = "0" + day1;
+    } else {
+      var dayfixTglSurat = day1;
     }
     var month1 = datasecond[1];
-    if(month1<10){
-      var monthTglSurat = "0"+month1
-    }else{
-      var monthTglSurat = month1
+    if (month1 < 10) {
+      var monthTglSurat = "0" + month1;
+    } else {
+      var monthTglSurat = month1;
     }
     var year1 = datasecond[2];
     var fulldate1 = [year1, monthTglSurat, dayfixTglSurat];
     var fulltglsurat = fulldate1.join("-");
 
-
     var deafulttglacara = response[0].tgl;
     var data1 = deafulttglacara.split("/");
     var day = data1[0];
-    if(day<10){
-      var dayfixTglAcara="0"+day
-    }else{
-      var dayfixTglAcara=day
+    if (day < 10) {
+      var dayfixTglAcara = "0" + day;
+    } else {
+      var dayfixTglAcara = day;
     }
     var month = data1[1];
-    if(month<10){
-      var monthTglAcara = "0"+month
-    }else{
-      var monthTglAcara = month
+    if (month < 10) {
+      var monthTglAcara = "0" + month;
+    } else {
+      var monthTglAcara = month;
     }
     var year = data1[2];
     var fulldate = [year, monthTglAcara, dayfixTglAcara];
@@ -906,23 +936,23 @@ ipcRenderer.on("getNonInvitationSucces", function(event, response) {
   response.forEach(element => {
     console.log(element.no);
     var tglNikahanRancu = element.tanggal_terima;
-    var tglketemuKamu = new Date(tglNikahanRancu)
+    var tglketemuKamu = new Date(tglNikahanRancu);
     var loveDay = tglketemuKamu.getDay();
     var LoveMonth = tglketemuKamu.getMonth();
-    var LoveYear = tglketemuKamu.getFullYear()
-    if(loveDay<10){
-    var Loversday="0"+loveDay
-    }else{
-    var Loversday =loveDay
+    var LoveYear = tglketemuKamu.getFullYear();
+    if (loveDay < 10) {
+      var Loversday = "0" + loveDay;
+    } else {
+      var Loversday = loveDay;
     }
 
-    if(LoveMonth<10){
-      var LoversMonth="0"+LoveMonth
-    }else{
-      var LoversMonth= LoveMonth
+    if (LoveMonth < 10) {
+      var LoversMonth = "0" + LoveMonth;
+    } else {
+      var LoversMonth = LoveMonth;
     }
-    var tglNikahDitetapkan =[Loversday,LoversMonth,LoveYear];
-    var fixdate= tglNikahDitetapkan.join("-")
+    var tglNikahDitetapkan = [Loversday, LoversMonth, LoveYear];
+    var fixdate = tglNikahDitetapkan.join("-");
     var clonerow = $("#readTableNonUnd > tr:first-child").clone();
     $(clonerow)
       .find("#kodenTglNonUnd")
@@ -951,53 +981,64 @@ ipcRenderer.on("getNonInvitationSucces", function(event, response) {
 
 ipcRenderer.on("testclient", function(event, response) {
   console.log(response);
-  console.log($('#nomer').val())
-  if(response==null){
-    document.getElementById('noticeid').innerHTML= "&#9824;input data ke database gagal"
-    document.getElementById('noticeid').style.color="red"
-    if($('#nomer').val()===""){
+  console.log($("#nomer").val());
+  if (response == null) {
+    document.getElementById("noticeid").innerHTML =
+      "&#9824;input data ke database gagal";
+    document.getElementById("noticeid").style.color = "red";
+    if ($("#nomer").val() === "") {
       console.log("ok you in red Zone of number");
-      document.getElementById('nomer').style.borderWidth="5px"
-      document.getElementById('nomer').style.borderColor="red"
-      document.getElementById('nonotice').style.color="red";
-      document.getElementById('validationNumber').innerHTML= "Tidak Boleh Kosong"
+      document.getElementById("nomer").style.borderWidth = "5px";
+      document.getElementById("nomer").style.borderColor = "red";
+      document.getElementById("nonotice").style.color = "red";
+      document.getElementById("validationNumber").innerHTML =
+        "Tidak Boleh Kosong";
       // $('#validationNumber').val("Sudah Ada Pada Database");
-    }else{
+    } else if ($("#nomer").val() === "0") {
       console.log("ok you in green Zone of number");
-      document.getElementById('nomer').style.borderColor="red"
-      document.getElementById('nomer').style.borderWidth="5px"
-      document.getElementById('nonotice').style.color="red"
-      document.getElementById('validationNumber').innerHTML= "Sudah Ada Pada Database"
+      document.getElementById("nomer").style.borderColor = "red";
+      document.getElementById("nomer").style.borderWidth = "5px";
+      document.getElementById("nonotice").style.color = "red";
+      document.getElementById("validationNumber").innerHTML =
+        "Nomer 0 tidak diizinkan";
+    } else {
+      console.log("ok you in green Zone of number");
+      document.getElementById("nomer").style.borderColor = "red";
+      document.getElementById("nomer").style.borderWidth = "5px";
+      document.getElementById("nonotice").style.color = "red";
+      document.getElementById("validationNumber").innerHTML =
+        "Sudah Ada Pada Database";
       // $('#validationNumber').val("Tidak Boleh Kosong");
     }
-    
-    if($('#tanggaltrima').val()===""){
-      document.getElementById('tglnotice').style.color="red";
-      document.getElementById('tanggaltrima').style.borderWidth="5px";
-      document.getElementById('tanggaltrima').style.borderColor="red";
-      document.getElementById('validationTgl').innerHTML= "Tidak Boleh Kosong"
-    }else{
-      console.log('you are in safe zone')
-      document.getElementById('tglnotice').style.color="green";
-      document.getElementById('tanggaltrima').style.borderWidth="5px";
-      document.getElementById('tanggaltrima').style.borderColor="green";
-      document.getElementById('validationTgl').innerHTML= " "
-    }
-   
-console.log('this red zone')
-  }else{
-    console.log('your good boy or girl')
-    document.getElementById('nomer').style.borderColor="#ddd"
-      document.getElementById('nomer').style.borderWidth="0.5px"
-      document.getElementById('nonotice').style.color="grey"
-      document.getElementById('validationNumber').innerHTML= " "
-      document.getElementById('noticeid').innerHTML= "&#9829;input data ke database berhasil"
-      document.getElementById('noticeid').style.color="green"
 
-      document.getElementById('tglnotice').style.color="grey";
-      document.getElementById('tanggaltrima').style.borderWidth="0.5px";
-      document.getElementById('tanggaltrima').style.borderColor="#ddd";
-      document.getElementById('validationTgl').innerHTML= " "
+    if ($("#tanggaltrima").val() === "") {
+      document.getElementById("tglnotice").style.color = "red";
+      document.getElementById("tanggaltrima").style.borderWidth = "5px";
+      document.getElementById("tanggaltrima").style.borderColor = "red";
+      document.getElementById("validationTgl").innerHTML = "Tidak Boleh Kosong";
+    } else {
+      console.log("you are in safe zone");
+      document.getElementById("tglnotice").style.color = "green";
+      document.getElementById("tanggaltrima").style.borderWidth = "5px";
+      document.getElementById("tanggaltrima").style.borderColor = "green";
+      document.getElementById("validationTgl").innerHTML = " ";
+    }
+
+    console.log("this red zone");
+  } else {
+    console.log("your good boy or girl");
+    document.getElementById("nomer").style.borderColor = "#ddd";
+    document.getElementById("nomer").style.borderWidth = "0.5px";
+    document.getElementById("nonotice").style.color = "grey";
+    document.getElementById("validationNumber").innerHTML = " ";
+    document.getElementById("noticeid").innerHTML =
+      "&#9829;input data ke database berhasil";
+    document.getElementById("noticeid").style.color = "green";
+
+    document.getElementById("tglnotice").style.color = "grey";
+    document.getElementById("tanggaltrima").style.borderWidth = "0.5px";
+    document.getElementById("tanggaltrima").style.borderColor = "#ddd";
+    document.getElementById("validationTgl").innerHTML = " ";
   }
 });
 
