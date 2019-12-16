@@ -8,8 +8,9 @@
   "private": false,
   "dependencies": {
     "@electron-forge/cli": "^6.0.0-beta.45",
+    "asar": "^2.0.3",
     "dom-to-image": "^2.6.0",
-    "electron": "^6.0.12",
+    "electron": "^7.1.5",
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^14.0.6",
     "electron-winstaller": "^4.0.0",
@@ -35,5 +36,34 @@
     "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
     "create-installer-win": "node installers/windows/createinstaller.js",
     "create-debian-installer": "electron-installer-debian --src release-builds/electron-tutorial-app-linux-x64/ --arch amd64 --config debian.json"
-  }
+  },
+  "build": {
+    "appId": "2019ARK",
+    "category": "admin.private.district.type",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "devDependencies": {}
 }
