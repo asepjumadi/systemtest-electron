@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "asar": "^2.0.3",
     "dom-to-image": "^2.6.0",
     "electron": "^7.1.5",
     "electron-installer-dmg": "^3.0.0",
