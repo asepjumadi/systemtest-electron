@@ -5,11 +5,13 @@
   "main": "main.js",
   "author": "asep jumadi",
   "license": "MIT",
+  "homepage": "./",
   "private": false,
   "dependencies": {
+    "@rescripts/cli": "^0.0.13",
     "dom-to-image": "^2.6.0",
-    "electron": "^7.1.5",
     "electron-installer-dmg": "^3.0.0",
+    "electron-is-dev": "^1.1.0",
     "electron-packager": "^14.0.6",
     "electron-winstaller": "^4.0.0",
     "exceljs": "^3.4.0",
@@ -29,15 +31,17 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "package-mac": "electron-packager . --overwrite --asar --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds --darwinDarkModeSupport=true",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar --platform=win64 --arch=ia32 --icon=assets/icons/win/icons.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
     "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
     "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
     "create-installer-win": "node installers/windows/createinstaller.js",
-    "create-debian-installer": "electron-installer-debian --src release-builds/electron-tutorial-app-linux-x64/ --arch amd64 --config debian.json"
+    "create-debian-installer": "electron-installer-debian --src release-builds/electron-tutorial-app-linux-x64/ --arch amd64 --config debian.json",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "build -mw"
   },
   "build": {
-    "appId": "2019ARK",
-    "category": "admin.private.district.type",
+    "appId": "com.ambarsunu.app",
     "dmg": {
       "contents": [
         {
@@ -59,11 +63,15 @@
       ]
     },
     "win": {
-      "target": "NSIS",
+      "target": "msi",
       "icon": "build/icon.ico"
     }
   },
   "devDependencies": {
-    
+    "electron": "^7.1.5",
+    "concurrently": "^5.0.1",
+    "electron-builder": "^21.2.0",
+    "typescript": "^3.7.3",
+    "wait-on": "^3.3.0"
   }
 }
