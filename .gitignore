@@ -1,1 +1,8 @@
 node_modules
+dist/
+mac
+
+*.package.json
+*.package-lock.json
+# circleciignore
+.circleci
