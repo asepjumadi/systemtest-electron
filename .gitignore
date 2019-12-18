@@ -1,7 +1,7 @@
 node_modules
 dist/
 mac
-
+release-builds
 *.package.json
 *.package-lock.json
 # circleciignore

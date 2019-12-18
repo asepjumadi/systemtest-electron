@@ -12,6 +12,7 @@
     "dom-to-image": "^2.6.0",
     "electron-installer-dmg": "^3.0.0",
     "electron-is-dev": "^1.1.0",
+    "electron-nightly": "^9.0.0-nightly.20191204",
     "electron-packager": "^14.0.6",
     "electron-winstaller": "^4.0.0",
     "exceljs": "^3.4.0",
@@ -31,8 +32,8 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "package-mac": "electron-packager . --overwrite --asar --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds --darwinDarkModeSupport=true",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar --platform=win64 --arch=ia32 --icon=assets/icons/win/icons.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . ambar-sunu-app --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icons.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Ambar-Sunu\"",
+    "package-linux": "electron-packager . ambar-sunu-exe --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
     "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
     "create-installer-win": "node installers/windows/createinstaller.js",
     "create-debian-installer": "electron-installer-debian --src release-builds/electron-tutorial-app-linux-x64/ --arch amd64 --config debian.json",
@@ -68,8 +69,8 @@
     }
   },
   "devDependencies": {
-    "electron": "^7.1.5",
     "concurrently": "^5.0.1",
+    "electron": "^7.1.5",
     "electron-builder": "^21.2.0",
     "typescript": "^3.7.3",
     "wait-on": "^3.3.0"
