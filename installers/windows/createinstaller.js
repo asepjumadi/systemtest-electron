@@ -2,7 +2,7 @@ const createWindowsInstaller = require('electron-winstaller').createWindowsInsta
 const path =require('path')
 
 getInstallerConfig()
-    ,then(createWindowsInstaller)
+    .then(createWindowsInstaller)
     .catch((error)=>{
         console.error(error.message || error)
         process.exit(1)
