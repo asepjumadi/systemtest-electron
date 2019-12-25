@@ -40,7 +40,7 @@ function createWindow() {
     }
 })
 
-mainWindow.webContents.openDevTools()
+// mainWindow.webContents.openDevTools()
 mainWindow.loadURL(`file://${__dirname}/index.html`||'http://'+server.host+':'+server.port+'/')
 
 mainWindow.once('ready-to-show',()=>{

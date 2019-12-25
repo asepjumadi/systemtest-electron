@@ -96,3 +96,129 @@ function getKksmRows(callback){
         // The connection has been closed
     });
 }
+
+
+var mysql = require('mysql');
+function readCountOfNonInvite(){
+    getCountOfNonInvite(function(rows){
+                var htmls = ' ';
+                console.log('database start in here')
+                console.log(rows)
+                rows.forEach(function(row){
+                htmls=row.count
+                    
+                    console.log('database show non undangan')
+                    console.log(row);
+                });
+                
+                var datas = document.getElementById('noncount');
+                datas.innerHTML = htmls;
+                return htmls;
+
+            });
+           
+        }
+        
+function getCountOfNonInvite(callback){
+   
+
+    // Add the credentials to access your database
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'data_admin'
+    });
+
+    // connect to mysql
+    connection.connect(function(err) {
+        // in case of error
+        if(err){
+            console.log(err.code);
+            console.log(err.fatal);
+        }
+    });
+
+    // Perform a query
+    $query = 'SELECT COUNT(*) as count FROM undangan';
+
+    connection.query($query, function(err, rows, fields) {
+        if(err){
+            console.log("An error ocurred performing the query.");
+            console.log(err);
+            return;
+        }
+
+        callback(rows);
+
+        console.log("Query succesfully executed");
+    });
+
+    // Close the connection
+    connection.end(function(){
+        // The connection has been closed
+    });
+}
+function readCountOfInvite(){
+    getCountOfInvite(function(rows){
+                var htmls = ' ';
+                console.log('database start in here')
+                console.log(rows)
+                rows.forEach(function(row){
+                htmls=row.count
+                    
+                    console.log('database show non undangan')
+                    console.log(row);
+                });
+                
+                var datas = document.getElementById('undcount');
+                datas.innerHTML = htmls;
+                return htmls;
+
+            });
+           
+        }
+        
+function getCountOfInvite(callback){
+   
+
+    // Add the credentials to access your database
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'data_admin'
+    });
+
+    // connect to mysql
+    connection.connect(function(err) {
+        // in case of error
+        if(err){
+            console.log(err.code);
+            console.log(err.fatal);
+        }
+    });
+
+    // Perform a query
+    $query = 'SELECT COUNT(*) as count FROM kksm';
+
+    connection.query($query, function(err, rows, fields) {
+        if(err){
+            console.log("An error ocurred performing the query.");
+            console.log(err);
+            return;
+        }
+
+        callback(rows);
+
+        console.log("Query succesfully executed");
+    });
+
+    // Close the connection
+    connection.end(function(){
+        // The connection has been closed
+    });
+}
+//select phone, phone2 
+// from jewishyellow.users 
+// where phone like '813%' and phone2<>''
