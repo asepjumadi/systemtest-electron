@@ -14,13 +14,13 @@ function print(quality = 2) {
   var doc = new jsPDF('p', 'mm','a4');
   var position = 0;
   
-  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
   heightLeft -= pageHeight;
   
   while (heightLeft >= 0) {
     position = heightLeft - imgHeight;
     doc.addPage();
-    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
     heightLeft -= pageHeight;
   }
   doc.save( 'file.pdf');
@@ -40,13 +40,13 @@ function printkksm(quality=2) {
   var doc = new jsPDF('p', 'mm','a4');
   var position = 0;
   
-  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
   heightLeft -= pageHeight;
   
   while (heightLeft >= 0) {
     position = heightLeft - imgHeight;
     doc.addPage();
-    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
     heightLeft -= pageHeight;
   }
   doc.save( 'file.pdf');
@@ -71,11 +71,11 @@ function printkksm(quality=2) {
 }
 function printrealkksm (quality = 2) {
   // const filename  = 'kksmFileOfPrint.pdf';
-  html2canvas(document.querySelector('#printJS-forms'), 
+  html2canvas(document.querySelector('#printJS-formsetkksm'), 
                         {scale: quality}
                 ).then(canvas => {
-var imgWidth = 211; 
-var pageHeight = 298;  
+var imgWidth = 210; 
+var pageHeight = 297;  
 var imgHeight = canvas.height * imgWidth / canvas.width;
 var heightLeft = imgHeight;
 var doc = new jsPDF('p', 'mm','a4');
@@ -87,7 +87,7 @@ heightLeft -= pageHeight;
 while (heightLeft >= 0) {
   position = heightLeft - imgHeight;
   doc.addPage();
-  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
   heightLeft -= pageHeight;
 }
 doc.save( 'file.pdf');
@@ -106,10 +106,10 @@ var heightLeft = imgHeight;
 var doc = new jsPDF('p', 'mm','a4');
 var position = 0;
 
-doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
 heightLeft -= pageHeight;
 
-while (heightLeft >= 0) {
+while (heightLeft >= 10) {
   position = heightLeft - imgHeight;
   doc.addPage();
   doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
@@ -130,13 +130,13 @@ var heightLeft = imgHeight;
 var doc = new jsPDF('l', 'mm','a4');
 var position = 0;
 
-doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
 heightLeft -= pageHeight;
 
 while (heightLeft >= 0) {
   position = heightLeft - imgHeight;
   doc.addPage();
-  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
   heightLeft -= pageHeight;
 }
 doc.save( 'file.pdf');
@@ -154,13 +154,13 @@ var heightLeft = imgHeight;
 var doc = new jsPDF('l', 'mm','a4');
 var position = 0;
 
-doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
 heightLeft -= pageHeight;
 
 while (heightLeft >= 0) {
   position = heightLeft - imgHeight;
   doc.addPage();
-  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+  doc.addImage(canvas.toDataURL('image/png'), 'PNG', 10, position, imgWidth, imgHeight);
   heightLeft -= pageHeight;
 }
 doc.save( 'file.pdf');
