@@ -28,22 +28,61 @@ function readTable(){
                 let html = ' ';
                 // console.log(rows)
                 rows.forEach(function(row){
-                    var tglNikahanRancu = row.tanggal_terima;
-                    var tglketemuKamu = new Date(tglNikahanRancu)
+                    var tglketemuKamu = new Date(row.tanggal_terima);
                     var loveDay = tglketemuKamu.getDate();
+                    console.log(loveDay)
                     var LoveMonth = tglketemuKamu.getMonth();
-                    var LoveYear = tglketemuKamu.getFullYear()
-                    if(loveDay>=10){
-                        var Loversday =loveDay
-                    }else{
-                        var Loversday="0"+loveDay
+                    var LoveYear = tglketemuKamu.getFullYear();
+                    if (loveDay < 10) {
+                        var Loversday = "0" + loveDay;
+                    } else {
+                        var Loversday = loveDay;
                     }
-                    var tglNikahDitetapkan =[Loversday,LoveMonth,LoveYear];
-                    var fixdate= tglNikahDitetapkan.join("-")
+                    if (LoveMonth <= 12) {
+                        if(LoveMonth == 0){
+                          var LoversMonth="01"
+                        }else if(LoveMonth == 1){
+                          var  LoversMonth="02"
+                        } else if(LoveMonth == 2){
+                          var LoversMonth="03"
+                          }
+                        else if(LoveMonth == 3){
+                        var LoversMonth="04"
+                        }
+                        else if(LoveMonth == 4){
+                            var LoversMonth="05"
+                            }
+                        else if(LoveMonth == 5){
+                        var LoversMonth="06"
+                        }
+                        else if(LoveMonth == 6){
+                            var LoversMonth="07"
+                            }
+                        else if(LoveMonth == 7){
+                        var LoversMonth="08"
+                        }
+                        else if(LoveMonth == 8){
+                            var LoversMonth="09"
+                            }
+                        else if(LoveMonth == 9){
+                        var LoversMonth="10"
+                        }
+                        else if(LoveMonth == 10){
+                            var LoversMonth="11"
+                            }
+                        else if(LoveMonth == 11){
+                        var LoversMonth="12"
+                        }
+                        }
+                        var tglNikahDitetapkan = [ Loversday,LoversMonth, LoveYear];
+                        var fixdate = tglNikahDitetapkan.join("-");
                   console.log(row.no)
                     html += '<tr>';
                     html += '<td>';
                     html += row.no;
+                    html += '</td>';
+                    html += '<td>';
+                    html += row.index;
                     html += '</td>';
                     html += '<td>';
                     html += row.code;
@@ -129,7 +168,7 @@ function getFirstTenRows(callback){
     });
 
     // Perform a query
-    $query = 'SELECT `no`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM `undangan`';
+    $query = 'SELECT `no`,`index`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM `undangan`';
 
     connection.query($query, function(err, rows, fields) {
         if(err){

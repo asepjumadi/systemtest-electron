@@ -1,5 +1,5 @@
 .disposisi {
-    background: url('./images/Disposisi.png') no-repeat;
+    background: url('./images/Disposisi2.png') no-repeat;
     width: 105mm;
     height: 160mm;
     background-size: contain;
@@ -32,3 +32,4 @@ height: 100mm;
     width: 300;
     height: 320;
 }
+small{color: black;}

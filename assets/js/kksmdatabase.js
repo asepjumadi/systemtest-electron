@@ -11,6 +11,9 @@ function readTablekksm(){
                     htmls += row.no;
                     htmls += '</td>';
                     htmls += '<td>';
+                    htmls += row.index;
+                    htmls += '</td>';
+                    htmls += '<td>';
                     htmls += row.kode;
                     htmls += '</td>';
                     htmls += '<td>';
@@ -77,7 +80,7 @@ function getKksmRows(callback){
     });
 
     // Perform a query
-    $query = 'SELECT `no`,`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana` FROM `kksm`';
+    $query = 'SELECT `no`,`index`,`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana` FROM `kksm`';
 
     connection.query($query, function(err, rows, fields) {
         if(err){

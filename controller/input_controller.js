@@ -13,6 +13,7 @@ var connection = mysql.createConnection({
     ipcMain.on('testmain',function(event,data){
         var response = {
             no:data.nomer,
+            index:data.index,
             code:data.code,
             tanggal_terima:data.tanggaltrima,
             nomer_tanggal:data.nomorTanggal,
@@ -27,12 +28,14 @@ var connection = mysql.createConnection({
       
     })
     ipcMain.on('updateNowbyNumber',function(event,data){
-
+        console.log(data.index)
+        console.log(data.code)
 // execute the UPDATE statement
-            connection.query('UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?, asal_surat = ?, isi_ringkasan = ?, keterangan  =? WHERE no = ?',[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
-            console.log(event.sender.send('updateResponse', result+"data succes been execute"))
+            connection.query('UPDATE `undangan` SET `index` = ? ,`code` = ? ,`tanggal_terima` = ? , `nomer_tanggal` = ?, `asal_surat` = ?, `isi_ringkasan` = ?, `keterangan`  = ? WHERE `no` = ?',[data.index,data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
+            console.log(event.sender.send('updateResponse', result))
             event.sender.send('updateResponse',result+"data succes been execute")
-            });
+            console.log(result)
+        });
             // console.log(connection.query(`UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?,asal_surat = ?,isi_ringkasan = ?,keterangan =? WHERE no = ?`,[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
 
             //     }))
@@ -45,11 +48,11 @@ var connection = mysql.createConnection({
             no:data.nomer
         }
         console.log(data)
-        connection.query("SELECT `no`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM undangan WHERE ?",response,function(error,result,field){
+        connection.query("SELECT `no`,`index`,`code`,`tanggal_terima`,`nomer_tanggal`,`asal_surat`,`isi_ringkasan`,`keterangan` FROM undangan WHERE ?",response,function(error,result,field){
             event.sender.send('getAllDataSucess', result)
             // console.log('kosong')
-            // console.log(result)
-            // console.log('kosong2')
+            console.log(result)
+            console.log('kosong2')
         })
         console.log(data)
     })
@@ -92,21 +95,9 @@ var connection = mysql.createConnection({
     })
 //sendAddKksm
     ipcMain.on('sendAddKksm',function(event,data){
-             //no
-
-          // code
-// tgltrima
-// nomorsurat
-// tanggalsurat
-// asalsurat
-// hariacara
-// tanggalacara
-// jamacara
-// tempatacara
-// acara
-// unitpelaksana
         var response = {
             no:data.no,
+            index:data.index,
             kode:data.code,
             tgl_terima:data.tgltrima,
             no_surat:data.nomorsurat,
@@ -129,7 +120,7 @@ var connection = mysql.createConnection({
             no:data.nomer
         }
         console.log(data)
-        connection.query("SELECT `no`,`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana` FROM kksm WHERE ?",response,function(error,result,field){
+        connection.query("SELECT `no`,`index`,`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana` FROM kksm WHERE ?",response,function(error,result,field){
             event.sender.send('searchKksmSucess', result)
             // console.log('kosong')
             // console.log(result)
@@ -144,22 +135,17 @@ var connection = mysql.createConnection({
         }
         connection.query("DELETE  FROM kksm WHERE ? ",response,function(error,result,field){
             event.sender.send('getDeletekksmSucess', result)
-            // console.log('delete clear')
-            // console.log(result)
-            // console.log('kosong2')
         })
         
     })
     ipcMain.on('updateAlKksm',function(event,data){
         // execute the UPDATE statement
-                    connection.query('UPDATE kksm SET kode = ? ,tgl_terima = ? , no_surat = ?, tgl_surat = ?, asal_surat = ?, hari = ?, tgl = ?, jam = ?, tempat  = ?, acara = ?, unit_pelaksana = ? WHERE no = ?',[data.code,data.tgltrima,data.nomorsurat,data.tanggalsurat,data.asalsurat,data.hariacara,data.tanggalacara,data.jamacara,data.tempatacara,data.acara,data.unitpelaksana,data.no], function(error, result, fields){
+        console.log(data.index)
+        console.log(data.code)
+                    connection.query('UPDATE `kksm` SET `index` = ?,`kode` = ? ,`tgl_terima` = ? , `no_surat` = ?, `tgl_surat` = ?, `asal_surat` = ?, `hari` = ?, `tgl` = ?, `jam` = ?, `tempat`  = ?, `acara` = ?, `unit_pelaksana` = ? WHERE `no` = ?',[data.index,data.code,data.tgltrima,data.nomorsurat,data.tanggalsurat,data.asalsurat,data.hariacara,data.tanggalacara,data.jamacara,data.tempatacara,data.acara,data.unitpelaksana,data.no], function(error, result, fields){
                     console.log(event.sender.send('updatekksmsucces', result+"data succes been execute"))
                     event.sender.send('updatekksmsucces',result+"data succes been execute")
                     });
-                  
-                    // console.log(connection.query(`UPDATE undangan SET code = ? ,tanggal_terima = ? , nomer_tanggal = ?,asal_surat = ?,isi_ringkasan = ?,keterangan =? WHERE no = ?`,[data.code,data.tanggaltrima,data.nomorTanggal,data.asalsurat,data.isiringkasan,data.keterangan,data.nomer], function(error, result, fields){
-        //`kode`,`tgl_terima`,`no_surat`,`tgl_surat`,`asal_surat`,`hari`,`tgl`,`jam`,`tempat`,`acara`,`unit_pelaksana`,
-                    //     }))
             })
     
             ipcMain.on('showKksmreal',function(event,data){
@@ -211,5 +197,3 @@ var connection = mysql.createConnection({
  }
 
 
- //showUndanganBookData
-//deleteKksmbynomer

@@ -25,6 +25,7 @@ const { BrowserWindow } = require("electron");
         }
         var params = {
           nomer: nomer,
+          index:$("#index1").val(),
           code: $("#code").val(),
           tanggaltrima: $("#tanggaltrima").val(),
           nomorTanggal: $("#nomorTanggal").val(),
@@ -49,6 +50,7 @@ const { BrowserWindow } = require("electron");
         ipcRenderer.send("deletebynomer", params);
       },
       updateByNumber: function() {
+        console.log($("#tanggaltrima").val())
         // var dirtsyTglTrima = $("#tanggaltrima").val();
         // var date2 = new Date(dirtsyTglTrima);
         // var TglTrima = date2.toLocaleDateString("id-ID");
@@ -65,6 +67,7 @@ const { BrowserWindow } = require("electron");
         }
         var params = {
           nomer: nomerid,
+          index: $('#index1').val(),
           code: $("#code").val(),
           tanggaltrima: $("#tanggaltrima").val(),
           nomorTanggal: $("#nomorTanggal").val(),
@@ -128,6 +131,7 @@ const { BrowserWindow } = require("electron");
         }
         var params = {
           no: no,
+          index:$('#index2').val(),
           code: $("#codekksm").val(),
           tgltrima: cleanTglTrima,
           nomorsurat: $("#nomorsurat").val(),
@@ -160,6 +164,7 @@ const { BrowserWindow } = require("electron");
         // console.log(cleanTglTrima)
         var params = {
           no: $("#nomerkksm").val(),
+          index:$('#index2').val(),
           code: $("#codekksm").val(),
           tgltrima: cleanTglTrima,
           nomorsurat: $("#nomorsurat").val(),
@@ -332,6 +337,7 @@ ipcRenderer.on("getAllDataSucess", function(event, response) {
       " Tidak Berhasil Ditemukan";
     document.getElementById("noticeid").style.color = "red";
     $("#nomer").val(0),
+    $('#index1').val("Index tidak Ditemukan"),
       $("#code").val("Kode surat tidak ditemukan"),
       $("#tanggaltrima").val("tanggal terima surat tidak ditemukan"),
       $("#nomorTanggal").val("nomer dan tanggal surat tidak ditemukan"),
@@ -339,7 +345,7 @@ ipcRenderer.on("getAllDataSucess", function(event, response) {
       $("#isiringkasan").val("isi ringkasan tidak ditemukan"),
       $("#keterangan").val("keterangan tidak ditemukan");
   } else {
-    // console.log(response[0]);
+    console.log(response[0]);
     document.getElementById("noticeid").innerHTML =
       "&#9829; data dengan nomer Urut ke-" +
       params.saverNomer +
@@ -349,23 +355,58 @@ ipcRenderer.on("getAllDataSucess", function(event, response) {
     var tglNikahanRancu = response[0].tanggal_terima;
     var tglketemuKamu = new Date(tglNikahanRancu);
     var loveDay = tglketemuKamu.getDate();
+    console.log(loveDay)
     var LoveMonth = tglketemuKamu.getMonth();
+    
+    console.log(LoveMonth)
     var LoveYear = tglketemuKamu.getFullYear();
     if (loveDay < 10) {
       var Loversday = "0" + loveDay;
     } else {
       var Loversday = loveDay;
     }
-    if (LoveMonth < 10) {
-      var LoversMonth = "0" + LoveMonth;
-    } else {
-      var LoversMonth = LoveMonth;
+    if (LoveMonth <= 12) {
+      if(LoveMonth == 0){
+        var LoversMonth="01"
+      }else if(LoveMonth == 1){
+        var  LoversMonth="02"
+      } else if(LoveMonth == 2){
+        var LoversMonth="03"
+        }
+        else if(LoveMonth == 3){
+          var LoversMonth="04"
+          }
+          else if(LoveMonth == 4){
+            var LoversMonth="05"
+            }
+            else if(LoveMonth == 5){
+              var LoversMonth="06"
+              }
+              else if(LoveMonth == 6){
+                var LoversMonth="07"
+                }
+                else if(LoveMonth == 7){
+                  var LoversMonth="08"
+                  }
+                  else if(LoveMonth == 8){
+                    var LoversMonth="09"
+                    }
+                    else if(LoveMonth == 9){
+                      var LoversMonth="10"
+                      }
+                      else if(LoveMonth == 10){
+                        var LoversMonth="11"
+                        }
+                        else if(LoveMonth == 11){
+                          var LoversMonth="12"
+                          }
     }
     var tglNikahDitetapkan = [LoveYear, LoversMonth, Loversday];
     var fixdate = tglNikahDitetapkan.join("-");
-    console.log(fixdate);
-    console.log("why you are still NaN?");
+    // console.log(fixdate);
+    // console.log("why you are still NaN?");
     $("#nomer").val(response[0].no),
+    $("#index1").val(response[0].index),
       $("#code").val(response[0].code),
       $("#tanggaltrima").val(fixdate),
       $("#nomorTanggal").val(response[0].nomer_tanggal),
@@ -441,11 +482,13 @@ ipcRenderer.on("getDisposisiSucces", function(event, response) {
     } else {
       var nomersurat = "-";
     }
-
     var clonerow = $("#printJS-form > div:first-child").clone();
     $(clonerow)
       .find("#codes1")
       .text(element.code);
+    $(clonerow)
+      .find("#indexdisn")
+      .text(element.index);
     $(clonerow)
       .find("#nouruts1")
       .text(element.no);
@@ -520,6 +563,9 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
     $(data)
       .find("#code1")
       .text(element.code);
+      $(data)
+      .find("#indexkksmn")
+      .text(element.index);
     $(data)
       .find("#nourut1")
       .text(element.no);
@@ -683,6 +729,7 @@ ipcRenderer.on("searchKksmSucess", function(event, response) {
     var Dates = [dy, dm, dd];
     var nullDate = Dates.join("-");
     $("#nomerkksm").val(0);
+    $("#index2").val("data tidak ditemukan");
     $("#codekksm").val("Kode surat tidak ditemukan");
     $("#tanggaltrimakksm").val(nullDate);
     $("#nomorsurat").val("nomer surat tidak ditemukan");
@@ -750,12 +797,14 @@ ipcRenderer.on("searchKksmSucess", function(event, response) {
     var year = data1[2];
     var fulldate = [year, monthTglAcara, dayfixTglAcara];
     var fulldateyear = fulldate.join("-");
-
+    console.log("hallo saya pembatas")
+    console.log(response[0].index)
     console.log(data1);
     console.log(deafulttglacara);
     console.log(fulldate);
     console.log(fulldateyear);
     $("#nomerkksm").val(response[0].no);
+    $('#index2').val(response[0].index);
     $("#codekksm").val(response[0].kode);
     $("#tanggaltrimakksm").val(fullTglTrima);
     $("#nomorsurat").val(response[0].no_surat);
@@ -790,19 +839,14 @@ ipcRenderer.on("getOnKksmSucces", function(event, response) {
       .find("#nourutk")
       .text(element.no);
     $(data)
+      .find("#indexk")
+      .text(element.index);
+    $(data)
       .find("#codek")
       .text(element.kode);
     $(data)
       .find("#isiringk")
       .text(
-        element.hari +
-          " ," +
-          element.tgl +
-          " ," +
-          element.jam +
-          " ," +
-          element.tempat +
-          " ," +
           element.acara
       );
     $(data)
@@ -832,26 +876,21 @@ ipcRenderer.on("getOnDisposisiSucces", function(event, response) {
   var array = [],
     a = 0;
 
-  var clonerow = response.forEach(element => {
+  response.forEach(element => {
     console.log(element.no);
     var clonerow = $("#printJS-formes > div:first-child").clone();
     $(clonerow)
       .find("#codex")
       .text(element.kode);
     $(clonerow)
+      .find("#indexkdx")
+      .text(element.index);
+    $(clonerow)
       .find("#nourutx")
       .text(element.no);
     $(clonerow)
       .find("#isiringx")
       .text(
-        element.hari +
-          " ," +
-          element.tgl +
-          " ," +
-          element.jam +
-          " ," +
-          element.tempat +
-          " ," +
           element.acara
       );
     $(clonerow)
