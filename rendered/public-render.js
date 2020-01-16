@@ -522,13 +522,64 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
   // console.log(response)
   response.forEach(element => {
     (array = []), (c = 0);
+    // var tglNikahanRancu = element.tanggal_terima;
+    // var tglketemuKamu = new Date(tglNikahanRancu);
+    // var loveDay = tglketemuKamu.getDate();
+    // var LoveMonth = tglketemuKamu.getMonth();
+    // var LoveYear = tglketemuKamu.getFullYear();
+
+    // var tglNikahDitetapkan = [loveDay, LoveMonth, LoveYear];
+    // var fixdate = tglNikahDitetapkan.join("-");
     var tglNikahanRancu = element.tanggal_terima;
     var tglketemuKamu = new Date(tglNikahanRancu);
     var loveDay = tglketemuKamu.getDate();
+    console.log(loveDay)
     var LoveMonth = tglketemuKamu.getMonth();
+    
+    console.log(LoveMonth)
     var LoveYear = tglketemuKamu.getFullYear();
-
-    var tglNikahDitetapkan = [loveDay, LoveMonth, LoveYear];
+    if (loveDay < 10) {
+      var Loversday = "0" + loveDay;
+    } else {
+      var Loversday = loveDay;
+    }
+    if (LoveMonth <= 12) {
+      if(LoveMonth == 0){
+        var LoversMonth="01"
+      }else if(LoveMonth == 1){
+        var  LoversMonth="02"
+      } else if(LoveMonth == 2){
+        var LoversMonth="03"
+        }
+        else if(LoveMonth == 3){
+          var LoversMonth="04"
+          }
+          else if(LoveMonth == 4){
+            var LoversMonth="05"
+            }
+            else if(LoveMonth == 5){
+              var LoversMonth="06"
+              }
+              else if(LoveMonth == 6){
+                var LoversMonth="07"
+                }
+                else if(LoveMonth == 7){
+                  var LoversMonth="08"
+                  }
+                  else if(LoveMonth == 8){
+                    var LoversMonth="09"
+                    }
+                    else if(LoveMonth == 9){
+                      var LoversMonth="10"
+                      }
+                      else if(LoveMonth == 10){
+                        var LoversMonth="11"
+                        }
+                        else if(LoveMonth == 11){
+                          var LoversMonth="12"
+                          }
+    }
+    var tglNikahDitetapkan = [Loversday, LoversMonth,LoveYear];
     var fixdate = tglNikahDitetapkan.join("-");
     element.nomer_tanggal
       .split(/([()])/)
@@ -555,7 +606,11 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
     } else {
       var tglsurat1 = "-";
     }
-
+    if (array[0] != undefined) {
+      var nomersurat = array[0];
+    } else {
+      var nomersurat = "-";
+    }
     console.log(element);
     var data = $("#idkksm > div")
       .first()
@@ -579,11 +634,11 @@ ipcRenderer.on("getkksmSucess", function(event, response) {
       .find("#asalsurat1")
       .text(element.asal_surat);
     $(data)
-      .find("#tgltrima1")
+      .find("#tglterima")
       .text(fixdate);
     $(data)
       .find("#nomortgl1")
-      .text(element.nomer_tanggal);
+      .text(nomersurat);
     $(data)
       .find("#tglsurat1")
       .text(tglsurat1);
@@ -848,7 +903,10 @@ ipcRenderer.on("getOnKksmSucces", function(event, response) {
       .find("#isiringk")
       .text(
           element.acara
-      );
+      );//tglteruskan
+    $(data)
+      .find("#tglteruskan")
+      .text(element.tgl_terima);
     $(data)
       .find("#keterangank")
       .text(element.unit_pelaksana);
@@ -893,6 +951,9 @@ ipcRenderer.on("getOnDisposisiSucces", function(event, response) {
       .text(
           element.acara
       );
+    $(clonerow)
+      .find('#tglacaraX')
+      .text(element.tgl);
     $(clonerow)
       .find("#keteranganx")
       .text(element.unit_pelaksana);

@@ -10,7 +10,7 @@
 .tabeltext{
     display:table;
     width:800px;
-
+    color: black;
     border-collapse:collapse;
     border: 0px solid black;
     margin:0 auto; 

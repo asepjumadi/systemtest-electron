@@ -7,6 +7,9 @@
     margin:0 auto; 
     line-height:25px;
 }
+.colorbook{
+    color: #000;
+}
 .tabeltext1{
     display:table;
     width:900px;

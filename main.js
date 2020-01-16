@@ -1,7 +1,7 @@
 const setupEvents = require('./installers/setupEvents')
-if(setupEvents.handleSquirrelEvent()){
-    return;
-}
+// if(setupEvents.handleSquirrelEvent()){
+//     return;
+// }
 const electron =require('electron')
 const { webContents }=require('electron')
 const {BrowserWindow} =require('electron')
@@ -40,7 +40,7 @@ function createWindow() {
     }
 })
 
-mainWindow.webContents.openDevTools()
+// mainWindow.webContents.openDevTools()
 mainWindow.loadURL(`file://${__dirname}/index.html`||'http://'+server.host+':'+server.port+'/')
 
 mainWindow.once('ready-to-show',()=>{
