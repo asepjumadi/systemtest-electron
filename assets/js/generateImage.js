@@ -92,7 +92,8 @@ while (heightLeft >= 0) {
 }
 doc.save( 'file.pdf');
 
-})}
+})
+}
 
 function printrealdisposisikksm (quality = 2) {
   // const filename  = 'kksmFileOfPrint.pdf';
