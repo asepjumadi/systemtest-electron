@@ -20,7 +20,7 @@
     "electron-winstaller": "^4.0.0",
     "exceljs": "^3.7.0",
     "html2canvas": "^1.0.0-rc.5",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "mysql": "^2.18.1",
     "node-audiorecorder": "^1.4.2",
     "node-sass": "^4.13.1",
